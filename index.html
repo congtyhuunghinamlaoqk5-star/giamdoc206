@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Tra cứu câu hỏi & đáp án (1 file)</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Tra cứu câu hỏi & đáp án (1 file)</title>
+    <style>
   body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; background: #f7f7f7; color: #111; }
   header { position: sticky; top: 0; background: #ffffffcc; backdrop-filter: saturate(150%) blur(6px); border-bottom: 1px solid #eee; z-index: 10; }
   .wrap { max-width: 900px; margin: 0 auto; padding: 16px; }
@@ -21,29 +21,27 @@
   .controls { display: flex; gap: 8px; margin: 10px 0 0; flex-wrap: wrap; }
   .btn { padding: 8px 10px; border: 1px solid #ddd; border-radius: 8px; background: #fff; font-size: 13px; cursor: pointer; }
   .btn.active { border-color: #999; }
-  @media (min-width: 700px) {
-    .options { grid-template-columns: 1fr 1fr; }
-  }
-</style>
+  
+    </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <input id="search" type="search" placeholder="Nhập từ khóa để tìm câu hỏi hoặc đáp án (ví dụ: Nghị quyết, QNCN, luật sĩ quan, ...)" />
-    <div class="controls">
-      <button id="toggleAns" class="btn">Ẩn/Hiện đáp án</button>
-      <button id="onlyCorrect" class="btn">Chỉ hiển thị đáp án đúng</button>
-      <span class="meta" id="meta"></span>
-    </div>
-  </div>
-</header>
-<main class="wrap">
-  <div id="results"></div>
-</main>
+    <header>
+        <div class="wrap">
+            <input id="search" type="search" placeholder="Nhập từ khóa để tìm câu hỏi hoặc đáp án (ví dụ: 1965, Truyền thống, luật sĩ quan, ...)" />
+            <div class="controls">
+                <button id="toggleAns" class="btn">Ẩn/Hiện đáp án</button>
+                <button id="onlyCorrect" class="btn">Chỉ hiển thị đáp án đúng</button>
+                <span class="meta" id="meta"></span>
+            </div>
+        </div>
+    </header>
+    <main class="wrap">
+        <div id="results"></div>
+    </main>
 
-<script>
-  // DỮ LIỆU GỐC (nhúng trực tiếp)
- const qaList = [
+    <script>
+        // DỮ LIỆU GỐC (nhúng trực tiếp)
+        const qaList = [
             {
                 "id": 1,
                 "q": "Qua nghiên cứu chuyên đề “Phòng, chống tệ nạn xã hội xâm nhập vào đội ngũ SQ, QNCN trong quân đội hiện nay”, đồng chí cho biết một trong những nguyên nhân chủ yếu dẫn đến tệ nạn xã hội là gì?",
@@ -2882,100 +2880,2983 @@
                 },
                 "correct": "B"
             },
+            {
+                "id": 251,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định ai có thẩm quyền quyết định tạm hoãn gọi nhập ngũ và miễn gọi nhập ngũ đối với công dân?",
+                "options": {
+                    "A": "Chủ tịch UBND cấp tỉnh",
+                    "B": "Chủ tịch UBND cấp xã",
+                    "C": "Chỉ huy trưởng Bộ CHQS cấp tỉnh",
+                    "D": "Bộ trưởng Bộ Quốc phòng"
+                },
+                "correct": "A"
+            },
+
+            {
+                "id": 252,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định thời gian niêm yết công khai danh sách công dân nhập ngũ trước khi giao quân theo sửa đổi là:",
+                "options": {
+                    "A": "10 ngày",
+                    "B": "15 ngày",
+                    "C": "20 ngày",
+                    "D": "30 ngày"
+                },
+                "correct": "C"
+            },
+
+            {
+                "id": 253,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định ai chủ trì việc kiểm tra sức khỏe trước khi nhập ngũ?",
+                "options": {
+                    "A": "Sở Y tế",
+                    "B": "Hội đồng khám sức khỏe nghĩa vụ quân sự khu vực",
+                    "C": "Bộ CHQS cấp tỉnh",
+                    "D": "UBND cấp xã"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 254,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, thời hạn thực hiện khám sức khỏe trước khi giao quân tối đa là:",
+                "options": {
+                    "A": "10 ngày",
+                    "B": "15 ngày",
+                    "C": "20 ngày",
+                    "D": "25 ngày"
+                },
+                "correct": "C"
+            },
+
+            {
+                "id": 255,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định miễn gọi nhập ngũ đối với đối tượng nào?",
+                "options": {
+                    "A": "Người đang học nghề",
+                    "B": "Người đủ tuổi nhưng không đủ sức khỏe phục vụ",
+                    "C": "Người đi lao động nước ngoài",
+                    "D": "Người đang giữ chức vụ quản lý"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 256,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định quyết định điều động phương tiện kỹ thuật dự bị thuộc về ai?",
+                "options": {
+                    "A": "Chủ tịch UBND cấp tỉnh",
+                    "B": "Chủ tịch UBND cấp xã",
+                    "C": "Bộ trưởng Bộ Công an",
+                    "D": "Ban CHQS cấp xã"
+                },
+                "correct": "A"
+            },
+
+            {
+                "id": 257,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, sửa đổi bổ sung về huấn luyện quân nhân dự bị quy định thời gian tối đa huấn luyện là bao nhiêu?",
+                "options": {
+                    "A": "5 ngày/năm",
+                    "B": "7 ngày/năm",
+                    "C": "10 ngày/năm",
+                    "D": "12 ngày/năm"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 258,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, Cơ quan thường trực Hội đồng giáo dục quốc phòng và an ninh cấp tỉnh theo sửa đổi là:",
+                "options": {
+                    "A": "Sở Giáo dục và Đào tạo",
+                    "B": "Bộ CHQS tỉnh",
+                    "C": "Công an tỉnh",
+                    "D": "UBND tỉnh"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 259,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, Chủ tịch UBND cấp xã có quyền gì với phương tiện kỹ thuật dự bị?",
+                "options": {
+                    "A": "Thực hiện quyết định điều động của Chủ tịch UBND tỉnh",
+                    "B": "Quyết định điều động",
+                    "C": "Quyết định thanh lý",
+                    "D": "Quyết định bản đấu giá"
+                },
+                "correct": "A"
+            },
+
+            {
+                "id": 260,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định việc chỉ cho đăng ký, quản lý phương tiện kỹ thuật dự bị như thế nào?",
+                "options": {
+                    "A": "Do Bộ Tư pháp quản lý",
+                    "B": "Do UBND cấp xã",
+                    "C": "Do doanh nghiệp quản lý",
+                    "D": "Do UBND cấp tỉnh trực tiếp quản lý"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 261,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định Chỉ huy trưởng Ban chỉ huy Bộ đội biên phòng quyết định hoặc tạm dừng qua lại cửa khẩu chính hoặc cửa khẩu song phương không quá bao nhiêu giờ?",
+                "options": {
+                    "A": "12 giờ",
+                    "B": "06 giờ",
+                    "C": "24 giờ",
+                    "D": "18 giờ"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 262,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định lực lượng phòng không cấp xã do dân quân đảm nhiệm được tổ chức như thế nào?",
+                "options": {
+                    "A": "Thành trung đội súng máy phòng không",
+                    "B": "Các tổ bắn mục tiêu bay thấp",
+                    "C": "Tổ chế áp tàu bay không người lái, phương tiện bay khác",
+                    "D": "Tất cả đáp án đều đúng"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 263,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định giáo dục quốc phòng và an ninh ở trung ương do cơ quan nào thường trực?",
+                "options": {
+                    "A": "Bộ Công an",
+                    "B": "Bộ Quốc phòng",
+                    "C": "Ban Tuyên giáo Trung ương",
+                    "D": "Bộ Giáo dục và Đào tạo"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 264,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, Chủ tịch UBND cấp xã có quyền gì trong công tác dân quân tự vệ?",
+                "options": {
+                    "A": "Quyết định giải thể đơn vị dân quân tự vệ",
+                    "B": "Quyết định thành lập đơn vị dân quân tự vệ",
+                    "C": "Công nhận công dân hoàn thành nghĩa vụ tham gia Dân quân tự vệ",
+                    "D": "Quyết định xử lý vi phạm"
+                },
+                "correct": "C"
+            },
+
+            {
+                "id": 265,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định Ban chỉ huy PTKV tổ chức sinh hoạt cho quân nhân dự bị giữ chức vụ chỉ huy đơn vị dự bị động viên từ cấp nào?",
+                "options": {
+                    "A": "Từ tiểu đội trưởng và tương đương trở lên",
+                    "B": "Từ trung đội trưởng và tương đương trở lên",
+                    "C": "Từ phó đại đội trưởng và tương đương trở lên",
+                    "D": "Từ đại đội trưởng và tương đương trở lên"
+                },
+                "correct": "A"
+            },
+
+            {
+                "id": 266,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng, bổ sung quy định nhiệm vụ của Hội đồng giáo dục quốc phòng và an ninh cấp xã là:",
+                "options": {
+                    "A": "Tổ chức giảng dạy tại trường học",
+                    "B": "Tuyên truyền và triển khai nhiệm vụ giáo dục quốc phòng, an ninh",
+                    "C": "Kiểm tra quân số lực lượng dự bị",
+                    "D": "Cấp giấy miễn nghĩa vụ"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 267,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định gì về đăng ký quân nhân dự bị?",
+                "options": {
+                    "A": "Thực hiện tại Bộ CHQS tỉnh",
+                    "B": "Thực hiện tại Ban CHQS cấp xã",
+                    "C": "Thực hiện tại Ban CHPT khu vực",
+                    "D": "Thực hiện tại Bộ Quốc phòng"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 268,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định, ai có quyền quyết định huy động quân nhân dự bị khi có tình huống khẩn cấp?",
+                "options": {
+                    "A": "Thủ tướng Chính phủ",
+                    "B": "Bộ trưởng Bộ Quốc phòng",
+                    "C": "Chủ tịch UBND tỉnh",
+                    "D": "Chỉ huy trưởng Bộ CHQS cấp tỉnh"
+                },
+                "correct": "A"
+            },
+
+            {   
+                "id": 269,
+                "q": "Luật sửa đổi, bổ sung một số điều của 11 luật về quân sự, quốc phòng quy định gì về thời gian thông báo danh sách công dân nhập ngũ?",
+                "options": {
+                    "A": "Ít nhất 5 ngày trước ngày giao quân",
+                    "B": "Ít nhất 10 ngày trước ngày giao quân",
+                    "C": "Ít nhất 15 ngày trước ngày giao quân",
+                    "D": "Ít nhất 20 ngày trước ngày giao quân"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 270,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người điều khiển xe mô tô, xe gắn máy khi tham gia giao thông phải thực hiện quy định nào dưới đây?",
+                "options": {
+                    "A": "Đội mũ bảo hiểm theo đúng quy chuẩn kỹ thuật quốc gia và cài quai đúng quy cách",
+                    "B": "Đi đúng làn đường, phần đường quy định",
+                    "C": "Chấp hành tín hiệu đèn giao thông",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 271,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 lần đầu tiên quy định việc giáo dục kiến thức pháp luật về trật tự an toàn giao thông tại đâu?",
+                "options": {
+                    "A": "Doanh nghiệp vận tải",
+                    "B": "Các cơ sở giáo dục",
+                    "C": "UBND phường, xã",
+                    "D": "Đài truyền hình"
+                },
+                "correct": "B"
+            },
+
+            {
+                "id": 272,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người điều khiển phương tiện tham gia giao thông phải mang theo những giấy tờ gì?",
+                "options": {
+                    "A": "Chứng nhận đăng ký xe hoặc bản sao Chứng nhận đăng ký xe có chứng thực kèm bản gốc giấy tờ xác nhận của tổ chức tín dụng, chi nhánh ngân hàng nước ngoài còn hiệu lực trong trường hợp xe đang được thế chấp tại tổ chức tín dụng, chi nhánh ngân hàng nước ngoài",
+                    "B": "Giấy phép lái xe phù hợp loại xe đang điều khiển",
+                    "C": "Chứng nhận bảo hiểm bắt buộc trách nhiệm dân sự của chủ xe cơ giới; Chứng nhận kiểm định an toàn kỹ thuật và bảo vệ môi trường đối với xe cơ giới theo quy định.",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 273,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, hành vi nào sau đây bị nghiêm cấm?",
+                "options": {
+                    "A": "Điều khiển xe cơ giới tham gia giao thông đường bộ không có giấy phép lái xe theo quy định của pháp luật.",
+                    "B": "Điều khiển phương tiện tham gia giao thông đường bộ lang lách, đánh võng, rủ ga liên tục.",
+                    "C": "Điều khiển phương tiện tham gia giao thông đường bộ mà trong máu hoặc hơi thở có nồng độ cồn.",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+            {
+                "id": 274,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, khi điều khiển xe đi trên đường, người lái xe cần làm gì để đảm bảo an toàn?",
+                "options": {
+                    "A": "Bật đèn chiếu sáng phía trước trong thời gian từ 18 giờ ngày hôm trước đến 06 giờ ngày hôm sau hoặc khi có sương mù, khói, bụi, trời mưa, thời tiết xấu làm hạn chế tầm nhìn",
+                    "B": "Chấp hành quy định về tốc độ, khoảng cách an toàn tối thiểu với xe phía trước cùng làn đường hoặc phần đường",
+                    "C": "Chấp hành báo hiệu đường bộ",
+                    "D": "Tất cả các đáp án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 275,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người lái xe mô tô hai bánh, xe gắn máy được chở tối đa hai người trong trường hợp nào dưới đây?",
+                "options": {
+                    "A": "Khi đi khoảng cách gần",
+                    "B": "Khi chở người bệnh đi cấp cứu",
+                    "C": "Khi đi trong đường nội bộ",
+                    "D": "Khi chở người đã uống rượu, bia"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 276,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người tham gia giao thông đường bộ phải đi bên nào của đường?",
+                "options": {
+                    "A": "Bên trái theo chiều đi của mình",
+                    "B": "Bên phải theo chiều đi của mình",
+                    "C": "Đi ở giữa đường",
+                    "D": "Đi bất cứ bên nào"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 277,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, hành vi nào sau đây bị nghiêm cấm?",
+                "options": {
+                    "A": "Điều khiển phương tiện tham gia giao thông đường bộ mà trong cơ thể có chất ma túy",
+                    "B": "Xúc phạm, đe dọa, cản trở, chống đối hoặc không chấp hành hiệu lệnh, hướng dẫn, yêu cầu kiểm tra, kiểm soát của người thi hành công vụ về bảo đảm trật tự, an toàn giao thông đường bộ",
+                    "C": "Dùng tay cầm và sử dụng điện thoại hoặc thiết bị điện tử khác khi điều khiển phương tiện tham gia giao thông đang di chuyển trên đường bộ",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 278,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người điều khiển xe mô tô, xe gắn máy phải bật đèn chiếu sáng trong trường nào dưới đây?",
+                "options": {
+                    "A": "Ban đêm",
+                    "B": "Khi trời mưa",
+                    "C": "Khi sương mù",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 279,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, khi qua đường sắt không có rào chắn, người lái xe phải làm gì?",
+                "options": {
+                    "A": "Tăng tốc để qua nhanh",
+                    "B": "Bấm còi để tàu chú ý sau đó nhanh chóng vượt qua.",
+                    "C": "Dừng lại về bên phải đường của mình, trước vạch dừng xe và quan sát hai phía, khi không có phương tiện giao thông đường sắt tới mới được đi qua",
+                    "D": "Quan sát hai phía, khi không có phương tiện giao thông đường sắt tới thì nhanh chóng đi qua"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 280,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người ngồi trên xe mô tô có được bám, kéo hoặc đẩy phương tiện khác khi tham gia giao thông không?",
+                "options": {
+                    "A": "Được phép khi xe nhẹ",
+                    "B": "Không được phép",
+                    "C": "Chỉ được phép trong làng",
+                    "D": "Chỉ được phép khi đường vắng"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 281,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người tham gia giao thông phải làm gì khi nghe tín hiệu xe ưu tiên?",
+                "options": {
+                    "A": "Tiếp tục đi bình thường",
+                    "B": "Tăng tốc độ để đi trước xe ưu tiên",
+                    "C": "Giảm tốc độ, đi sát lề đường bên phải hoặc dừng lại để nhường đường",
+                    "D": "Dừng xe ngay lập tức"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 282,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người đi bộ phải chấp hành những quy định nào dưới đây?",
+                "options": {
+                    "A": "Đi trên vỉa hè, lề đường",
+                    "B": "Chấp hành tín hiệu giao thông",
+                    "C": "Không được vượt qua dải phân cách, đu, bám vào phương tiện giao thông đường bộ đang di chuyển",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 283,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, biển số xe được cấp cho xe quân sự là kiểu biển như thế nào?",
+                "options": {
+                    "A": "Biển số xe nền màu đỏ, chữ và số màu trắng",
+                    "B": "Biển số xe nền màu xanh, chữ và số màu trắng",
+                    "C": "Biển số xe nền màu vàng, chữ và số màu đen",
+                    "D": "Biển số xe nền màu trắng, chữ và số màu đen"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 284,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 quy định như thế nào khi chở trẻ em dưới 10 tuổi và chiều cao dưới 1,35m trên ô tô?",
+                "options": {
+                    "A": "Trẻ em phải ngồi ghế lái phụ",
+                    "B": "Trẻ em không được ngồi cùng hàng ghế với lái xe (trừ xe chỉ có 01 hàng ghế)",
+                    "C": "Trẻ em ngồi bất kỳ chỗ nào trên xe",
+                    "D": "Trẻ em phải ngồi hàng ghế sau cùng"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 285,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, loại Giấy phép lái xe nào có thời hạn 10 năm kể từ ngày cấp?",
+                "options": {
+                    "A": "Giấy phép lái xe hạng A",
+                    "B": "Giấy phép lái xe hạng A1",
+                    "C": "Giấy phép lái xe hạng B",
+                    "D": "Giấy phép lái xe hạng D"
+                },
+                "correct": "C"
+            },
+           
+{
+                "id": 286,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, điểm của giấy phép lái xe bao gồm bao nhiêu điểm?",
+                "options": {
+                    "A": "21 điểm",
+                    "B": "12 điểm",
+                    "C": "10 điểm",
+                    "D": "09 điểm"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 287,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 quy định điểm, trừ điểm đối với giấy phép lái xe nhằm mục tiêu gì?",
+                "options": {
+                    "A": "Hạn chế cấp Giấy phép lái xe mới",
+                    "B": "Giảm số lượng phương tiện lưu thông",
+                    "C": "Quản lý việc chấp hành pháp luật về trật tự, an toàn giao thông đường bộ của người lái xe trên hệ thống cơ sở dữ liệu về trật tự, an toàn giao thông đường bộ",
+                    "D": "Tăng lệ phí cấp Giấy phép lái xe"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 288,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, hành vi giao xe ô tô, mô tô cho người nào sau đây tham gia giao thông đường bộ bị nghiêm cấm?",
+                "options": {
+                    "A": "Người chưa đủ tuổi theo quy định.",
+                    "B": "Người không có giấy phép lái xe phù hợp",
+                    "C": "Người có giấy phép lái xe nhưng đã bị trừ hết 12 điểm.",
+                    "D": "Tất cả các ý đã nêu."
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 289,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người có giấy phép lái xe chưa bị trừ hết 12 điểm, được phục hồi điểm giấy phép lái xe trong trường hợp nào sau đây?",
+                "options": {
+                    "A": "Không được phục hồi.",
+                    "B": "Được phục hồi đủ 12 điểm, nếu không bị trừ điểm trong thời hạn 06 tháng từ ngày bị trừ điểm gần nhất.",
+                    "C": "Được phục hồi đủ 12 điểm, nếu không bị trừ điểm trong thời hạn 12 tháng từ ngày bị trừ điểm gần nhất.",
+                    "D": "Sau 06 tháng từ ngày bị trừ điểm, nếu không vi phạm lại lỗi đã bị trừ điểm thì được cộng số điểm tương ứng với lỗi vi phạm đã bị trừ."
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 290,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người có giấy phép lái xe đã bị trừ hết điểm phải làm gì để phục hồi điểm giấy phép lái xe?",
+                "options": {
+                    "A": "Không được phục hồi",
+                    "B": "Không vi phạm pháp luật trật tự, an toàn giao thông đường bộ trong thời gian 12 tháng kể từ ngày bị trừ hết điểm.",
+                    "C": "Sau thời hạn ít nhất là 06 tháng kể từ ngày bị trừ hết điểm, người có phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm.",
+                    "D": "Sau thời hạn ít nhất là 12 tháng kể từ ngày bị trừ hết điểm, người có phép lái xe được tham gia kiểm tra nội dung kiến thức pháp luật về trật tự, an toàn giao thông đường bộ theo quy định, có kết quả đạt yêu cầu thì được phục hồi đủ 12 điểm."
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 291,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, người điều khiển phương tiện tham gia giao thông đường bộ không được dừng xe, đỗ xe tại các vị trí nào?",
+                "options": {
+                    "A": "Bên trái đường một chiều",
+                    "B": "Nơi đường giao nhau",
+                    "C": "Trên phần đường dành cho người đi bộ qua đường",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 292,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, quỹ giảm thiểu thiệt hại tai nạn giao thông đường bộ được hình thành từ các nguồn tài chính nào?",
+                "options": {
+                    "A": "Hỗ trợ, viện trợ, đóng góp tự nguyện của các tổ chức, cá nhân trong nước",
+                    "B": "Hỗ trợ, viện trợ, đóng góp tự nguyện của các tổ chức, cá nhân nước ngoài",
+                    "C": "Từ các nguồn khác theo quy định của pháp luật",
+                    "D": "Tất cả các phương án đều đúng"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 293,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024 thì Phương tiện giao thông đường bộ là các loại xe, bao gồm?",
+                "options": {
+                    "A": "Phương tiện giao thông cơ giới đường bộ, phương tiện giao thông thô sơ, xe máy chuyên dùng",
+                    "B": "Phương tiện giao thông cơ giới đường bộ, phương tiện giao thông thô sơ đường bộ và các loại xe tương tự",
+                    "C": "Phương tiện giao thông cơ giới đường bộ, phương tiện giao thông thô sơ đường bộ, xe máy chuyên dùng và các loại xe tương tự",
+                    "D": "Phương tiện giao thông cơ giới đường bộ, phương tiện giao thông thô sơ, xe máy chuyên dùng hoặc các loại xe tương tự"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 294,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, tại nơi đường giao nhau, người lái xe đang đi trên đường không ưu tiên, đường nhánh phải nhường đường như thế nào là đúng quy tắc giao thông?",
+                "options": {
+                    "A": "Nhường đường cho xe đi ở bên phải mình tới.",
+                    "B": "Nhường đường cho xe đi ở bên trái mình tới.",
+                    "C": "Nhường đường cho xe đi trên đường ưu tiên hoặc đường chính từ bất kỳ hướng nào tới.",
+                    "D": "Không cần nhường đường"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 295,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, những trường hợp nào sau đây phải đổi chứng nhận đăng ký xe, biển số xe cơ giới, xe máy chuyên dùng?",
+                "options": {
+                    "A": "Chứng nhận đăng ký xe, biển số xe bị mờ, hỏng",
+                    "B": "Cải tạo, thay đổi màu sơn; thay đổi tên, số định danh của tổ chức, cá nhân hoặc thay đổi mục đích sử dụng",
+                    "C": "Khi chủ xe thay đổi địa chỉ và có nhu cầu đổi chứng nhận đăng ký xe; Chứng nhận đăng ký xe, biển số xe hết thời hạn sử dụng",
+                    "D": "Tất cả các trường hợp đã nêu"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 296,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, khi ở một vị trí vừa có biển báo hiệu đặt cố định vừa có biển báo hiệu tạm thời mà hai biển có ý nghĩa khác nhau, người tham gia giao thông đường bộ phải chấp hành hiệu lệnh của biển báo nào?",
+                "options": {
+                    "A": "Biển báo cố định",
+                    "B": "Biển báo tạm thời",
+                    "C": "Tùy trường hợp, do người tham gia giao thông đường bộ tự quyết định",
+                    "D": "Chấp hành cả hai biển báo"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 297,
+                "q": "Theo Luật Trật tự, an toàn giao thông đường bộ năm 2024, khi điều khiển xe chạy trên đường, biết có xe sau xin vượt, nếu đủ điều kiện an toàn người điều khiển phương tiện phải làm gì?",
+                "options": {
+                    "A": "Tăng tốc độ và ra hiệu cho xe sau vượt, không được gây trở ngại cho xe xin vượt.",
+                    "B": "Giảm tốc độ, có tín hiệu rẽ phải để báo hiệu cho người điều khiển phương tiện tham gia giao thông đường bộ phía sau biết được vượt và đi sát về bên phải của phần đường xe chạy cho đến khi xe sau đã vượt qua, không được cản trở đối với xe xin vượt.",
+                    "C": "Giảm tốc độ, có tín hiệu rẽ trái để báo hiệu cho người điều khiển phương tiện tham gia giao thông đường bộ phía sau biết được vượt và đi sát về bên trái của phần đường xe chạy cho đến khi xe sau đã vượt qua, không được cản trở đối với xe xin vượt",
+                    "D": "Cho xe đi sát về bên trái của phần đường xe chạy và ra hiệu cho xe sau vượt, không được gây trở ngại cho xe xin vượt."
+                },
+                "correct": "B"
+            },
+{
+                "id": 298,
+                "q": "Theo quy định của Luật Trật tự, an toàn giao thông đường bộ năm 2024, trường hợp nào dưới đây không được vượt xe?",
+                "options": {
+                    "A": "Ở phần đường dành cho người đi bộ qua đường",
+                    "B": "Đường cong có tầm nhìn bị hạn chế",
+                    "C": "Trong hầm đường bộ",
+                    "D": "Tất cả các trường hợp đã nêu"
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 299,
+                "q": "Theo quy định của Luật Trật tự, an toàn giao thông đường bộ năm 2024, khi tránh xe đi ngược chiều, các xe phải nhường đường như thế nào là đúng quy tắc giao thông?",
+                "options": {
+                    "A": "Nơi đường hẹp chỉ đủ cho một xe chạy và có chỗ tránh xe thì xe nào ở gần chỗ tránh hơn phải vào vị trí tránh, nhường đường cho xe đi ngược chiều.",
+                    "B": "Xe xuống dốc phải nhường đường cho xe lên dốc",
+                    "C": "Xe có chướng ngại vật phía trước phải nhường đường cho xe không có chướng ngại vật phía trước",
+                    "D": "Tất cả các ý đã nêu."
+                },
+                "correct": "D"
+            },
+
+{
+                "id": 300,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 quy định về thiết bị an toàn dành cho trẻ em có hiệu lực từ khi nào?",
+                "options": {
+                    "A": "01/01/2025",
+                    "B": "01/01/2026",
+                    "C": "01/7/2026",
+                    "D": "01/01/2027"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 301,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 bổ sung quy định kiểm định khí thải đối với loại phương tiện nào?",
+                "options": {
+                    "A": "Xe buýt",
+                    "B": "Xe tải",
+                    "C": "Xe mô tô, xe gắn máy",
+                    "D": "Xe ô tô con"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 302,
+                "q": "Luật Trật tự, an toàn giao thông đường bộ năm 2024 quy định thứ tự xuống phà như thế nào là đúng quy tắc giao thông?",
+                "options": {
+                    "A": "Xe thô sơ, người đi bộ xuống trước, xe cơ giới, xe máy chuyên dùng xuống sau.",
+                    "B": "Xe cơ giới, xe máy chuyên dùng xuống trước, xe thô sơ, người đi bộ xuống sau.",
+                    "C": "Xe cơ giới, xe thô sơ xuống trước, xe máy chuyên dùng, người đi bộ xuống sau",
+                    "D": "Xe cơ giới, xe thô sơ, xe máy chuyên dùng xuống trước, người đi bộ xuống sau"
+                },
+                "correct": "B"
+            },
+{
+                "id": 303,
+                "q": "Theo Luật Giao thông đường bộ năm 2008, điểm nổi bật nhất của Luật Đường bộ năm 2024 là gì?",
+                "options": {
+                    "A": "Giữ nguyên nội dung cũ",
+                    "B": "Bổ sung cơ chế huy động nguồn lực xã hội, phát triển đường cao tốc và quản lý vận tải hiện đại",
+                    "C": "Giảm số điều luật",
+                    "D": "Chỉ tập trung vào đường đô thị"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 304,
+                "q": "Theo Luật Đường bộ năm 2024, đường bộ theo cấp quản lý gồm những loại đường nào sau đây?",
+                "options": {
+                    "A": "Quốc lộ, đường tỉnh, đường xã, đường thôn, đường đô thị, đường chuyên dùng",
+                    "B": "Đường sắt, đường bộ, đường hàng không",
+                    "C": "Đường sắt đô thị và đường biển",
+                    "D": "Chỉ có quốc lộ và đường tỉnh"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 305,
+                "q": "Theo Luật Đường bộ năm 2024, đường chuyên dùng là đường gì?",
+                "options": {
+                    "A": "Là đường nối liền Thủ đô Hà Nội với trung tâm hành chính cấp tỉnh",
+                    "B": "Là đường nằm trong khu vực một tính trung tâm hành chính của một vùng hành chính",
+                    "C": "Là đường trong khu vực thôn, đường liên thôn nối với khu vực sản xuất nông nghiệp, lâm nghiệp và cơ sở sản xuất, kinh doanh khác trên địa bàn thôn",
+                    "D": "Là đường chuyên phục vụ giao thông cho một hoặc một số cơ quan, tổ chức, cá nhân và đường nội bộ"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 306,
+                "q": "Theo Luật Đường bộ năm 2024, việc sử dụng đất hành lang an toàn đường bộ phải bảo đảm quy định nào?",
+                "options": {
+                    "A": "Bảo đảm an toàn công trình đường bộ và công trình khác trong hành lang an toàn đường bộ",
+                    "B": "Không được lấp lấp báo hiệu đường bộ, không ảnh hưởng đến tầm nhìn xe chạy, bảo đảm trật tự, an toàn giao thông đường bộ",
+                    "C": "Bảo vệ cảnh quan, môi trường theo quy định của pháp luật",
+                    "D": "Tất cả các quy định đã nêu"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 307,
+                "q": "Điều khoản chuyển tiếp trong Luật Đường bộ năm 2024 có mục đích gì?",
+                "options": {
+                    "A": "Đảm bảo tính khả thi khi triển khai thực hiện",
+                    "B": "Tạo việc làm cho người có công với đất nước",
+                    "C": "Thay thế hoàn toàn các luật giao thông khác",
+                    "D": "Miễn trừ trách nhiệm cho doanh nghiệp"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 308,
+                "q": "Theo Luật Đường bộ năm 2024, đường cao tốc là loại đường như thế nào?",
+                "options": {
+                    "A": "Chỉ dành cho xe máy",
+                    "B": "Chỉ dành cho xe thô sơ",
+                    "C": "Chỉ dành cho một số loại xe cơ giới, xe máy chuyên dùng tham gia giao thông; chỉ cho xe ra, vào ở những điểm nhất định",
+                    "D": "Đường nhỏ trong đô thị"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 309,
+                "q": "Theo Luật Đường bộ năm 2024, hành vi nào sau đây bị nghiêm cấm?",
+                "options": {
+                    "A": "Phá hoại kết cấu hạ tầng đường bộ",
+                    "B": "Đường sắt, đường bộ, đường hàng không",
+                    "C": "Dự án xây dựng mới",
+                    "D": "Tất cả các hành vi đã nêu"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 310,
+                "q": "Theo Luật Đường bộ năm 2024, hành lang an toàn đường bộ là gì?",
+                "options": {
+                    "A": "Phần đất dành để bảo đảm an toàn giao thông đường bộ, bảo đảm tầm nhìn xe chạy và hạn chế ảnh hưởng đến môi trường xung quanh",
+                    "B": "Cách của phân khu",
+                    "C": "Phần đường chỉ cho người đi bộ",
+                    "D": "Phần đường chỉ cho xe đỗ"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 311,
+                "q": "Theo Luật Đường bộ năm 2024, trong trường hợp nào sau đây đường cao tốc phải tạm dừng khai thác?",
+                "options": {
+                    "A": "Công trình bị hư hỏng do xảy ra sự cố công trình, do hậu quả của thiên tai không thể khai thác, sử dụng an toàn",
+                    "B": "Khi xảy ra sự cố cháy, nổ, tai nạn giao thông đặc biệt nghiêm trọng buộc phải tạm dừng khai thác để phục vụ cứu nạn, cứu hộ và bảo đảm an toàn giao thông đường bộ",
+                    "C": "Khi có yêu cầu của cơ quan an ninh hoặc các trường hợp đặc biệt khác theo yêu cầu của cơ quan nhà nước có thẩm quyền",
+                    "D": "Tất cả các trường hợp được nêu"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 312,
+                "q": "Theo Luật Đường bộ năm 2024, khi phát hiện công trình đường bộ bị hư hỏng, ai có trách nhiệm báo ngay cho cơ quan quản lý?",
+                "options": {
+                    "A": "Chi cục trưởng Cảnh sát giao thông",
+                    "B": "Người chủ quản đường bộ",
+                    "C": "Mọi tổ chức, cá nhân",
+                    "D": "Người quản lý, sử dụng đường bộ"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 313,
+                "q": "Theo quy định của Luật Đường bộ năm 2024, 'Tài khoản giao thông' là gì?",
+                "options": {
+                    "A": "Là tài khoản mở cho chủ phương tiện giao thông đường bộ và kết nối với phương tiện thanh toán hợp pháp để thực hiện thanh toán tự động dùng trên nền một theo quy định của pháp luật về ngân hàng",
+                    "B": "Là tài khoản ngân hàng của doanh nghiệp vận tải để thanh toán phí đường bộ",
+                    "C": "Quỹ bảo trì đường bộ do Nhà nước quản lý",
+                    "D": "Tài khoản thu phí của trạm thu phí BOT"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 314,
+                "q": "Theo Luật Đường bộ năm 2024, Thanh tra đường bộ có nhiệm vụ nào sau đây?",
+                "options": {
+                    "A": "Tổ chức thiết kế, thi công các dự án xây dựng đường bộ",
+                    "B": "Quyết định đưa vào sử dụng một số tuyến đường bộ cao tốc",
+                    "C": "Kiểm tra, xử lý vi phạm về bảo vệ kết cấu hạ tầng đường bộ và hoạt động vận tải đường bộ",
+                    "D": "Thu phí sử dụng đường bộ trên các tuyến quốc lộ"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 315,
+                "q": "Theo Luật Đường bộ năm 2024, kết cấu hạ tầng đường bộ gồm?",
+                "options": {
+                    "A": "Công trình đường bộ; bến xe; bãi đỗ xe; trạm dừng nghỉ; điểm dừng xe, đỗ xe; đất của đường bộ; hành lang an toàn đường bộ và các công trình phụ trợ phục vụ cho hoạt động đường bộ",
+                    "B": "Chỉ gồm phần mặt đường và lề đường",
+                    "C": "Các công trình giao thông đường bộ, nhà ga và bến xe",
+                    "D": "Hệ thống cây xanh, điện chiếu sáng và biển báo dọc đường"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 316,
+                "q": "Theo Luật Đường bộ năm 2024, hoạt động đường bộ phải tuân thủ nguyên tắc nào dưới đây?",
+                "options": {
+                    "A": "Bảo đảm thông suốt, an toàn, hiệu quả; phát triển bền vững và bảo vệ môi trường",
+                    "B": "Ưu tiên tuyệt đối cho các phương tiện vận tải công cộng và xe chuyên dùng",
+                    "C": "Chủ trương giao xây dựng mới đường bộ, không cần bảo vệ môi trường",
+                    "D": "Doanh nghiệp được toàn quyền khai thác đường bộ mà không cần tuân thủ quy hoạch"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 317,
+                "q": "Theo Luật Đường bộ năm 2024, tên đường bộ được đặt theo quy tắc nào?",
+                "options": {
+                    "A": "Đặt theo tên danh nhân, người có công với đất nước",
+                    "B": "Đặt theo tên Di tích, sự kiện lịch sử, văn hóa",
+                    "C": "Đặt theo tên địa danh",
+                    "D": "Đặt theo tên các danh lam thắng cảnh"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 318,
+                "q": "Tại Chỉ thị số 23/CT-TTg ngày 25/5/2023 của Ban Bí thư yêu cầu nhiệm vụ trọng tâm nào?",
+                "options": {
+                    "A": "Hoàn thiện đồng bộ hệ thống pháp luật về giao thông",
+                    "B": "Tập trung mở rộng đường cao tốc",
+                    "C": "Phát triển vận tải hàng hóa",
+                    "D": "Tăng cường kiểm định xe máy"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 319,
+                "q": "Luật Đường bộ năm 2024 quy định hệ thống quản lý giao thông thông minh nhằm mục đích gì?",
+                "options": {
+                    "A": "Hỗ trợ hoạt động vận tải và thanh toán điện tử giao thông",
+                    "B": "Quản lý hệ thống đường sắt",
+                    "C": "Thay thế hoàn toàn cảnh sát giao thông",
+                    "D": "Giảm giá vé phương tiện công cộng"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 320,
+                "q": "Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị đặt mục tiêu đến năm 2030 tỷ trọng xuất khẩu sản phẩm công nghệ cao trên tổng số giá trị hàng hóa xuất khẩu đạt tối thiểu bao nhiêu %?",
+                "options": {
+                    "A": "40%",
+                    "B": "45%",
+                    "C": "50%",
+                    "D": "55%"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 321,
+                "q": "Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị xác định tầm nhìn đến 2045, kinh tế số đạt tối thiểu bao nhiêu % GDP?",
+                "options": {
+                    "A": "40%",
+                    "B": "45%",
+                    "C": "50%",
+                    "D": "55%"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 322,
+                "q": "Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị xác định nguồn nhân lực nghiên cứu khoa học, đổi mới sáng tạo đạt mục tiêu đạt bao nhiêu người trên 1 vạn dân?",
+                "options": {
+                    "A": "10",
+                    "B": "12",
+                    "C": "15",
+                    "D": "20"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 323,
+                "q": "Nghị quyết số 57-NQ/TW ngày 22/12/2024 của Bộ Chính trị xác định tỷ lệ đóng góp của năng suất nhân tố tổng hợp (TFP) vào tăng trưởng kinh tế đến năm 2030 ở mức nào?",
+                "options": {
+                    "A": "Trên 50%",
+                    "B": "Trên 55%",
+                    "C": "Trên 60%",
+                    "D": "Trên 65%"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 324,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương xác định mục tiêu đến năm 2030 về khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số trong Quân đội là gì?",
+                "options": {
+                    "A": "Đứng đầu khu vực và trên thế giới",
+                    "B": "Thuộc nhóm dẫn đầu quốc gia, một số lĩnh vực đạt trình độ quốc tế",
+                    "C": "Đạt trình độ ngang bằng khu vực",
+                    "D": "Hoàn thành 50% kế hoạch chuyển đổi số"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 325,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, một trong các công nghệ chiến lược mà Quân đội đạt mục tiêu làm chủ đến năm 2030 là gì?",
+                "options": {
+                    "A": "Công nghệ sinh học",
+                    "B": "Công nghệ blockchain",
+                    "C": "Trí tuệ nhân tạo",
+                    "D": "Công nghệ may mặc"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 326,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, tầm nhìn đến năm 2045, Quân đội hướng tới điều gì?",
+                "options": {
+                    "A": "Chuyển đổi số toàn diện chi phối trong các hoạt động quản lý, chỉ đạo, điều hành, tác chiến",
+                    "B": "Tự động hóa toàn bộ các hoạt động",
+                    "C": "Giảm 50% nhân lực vận hành",
+                    "D": "Không còn sử dụng vũ khí"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 327,
+                "q": "Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương xác định yếu tố nào là điều kiện tiên quyết để hoàn thiện và thúc đẩy phát triển khoa học, công nghệ, đổi mới sáng tạo trong Quân đội?",
+                "options": {
+                    "A": "Nguồn vốn vay quốc tế",
+                    "B": "Thể chế, nhân lực, hạ tầng, dữ liệu và công nghệ chiến lược",
+                    "C": "Trang thiết bị nhập khẩu",
+                    "D": "Sự hỗ trợ từ doanh nghiệp tư nhân"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 328,
+                "q": "Một trong những nhiệm vụ, giải pháp theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương là gì?",
+                "options": {
+                    "A": "Tăng cường hợp tác quốc tế",
+                    "B": "Quản lý, khai thác dữ liệu số",
+                    "C": "Hạn chế đầu tư công nghệ mới",
+                    "D": "Giảm nghiên cứu khoa học"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 329,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương xác định đến năm 2030, mục tiêu tốc độ tăng trưởng kinh tế tri thức trong Quân đội là gì?",
+                "options": {
+                    "A": "Trên 5%/năm",
+                    "B": "Trên 10%/năm",
+                    "C": "Trên 15%/năm",
+                    "D": "Trên 20%/năm"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 330,
+                "q": "Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương nhấn mạnh bảo đảm yếu tố nào xuyên suốt trong phát triển khoa học, công nghệ và chuyển đổi số?",
+                "options": {
+                    "A": "An ninh mạng, an ninh dữ liệu",
+                    "B": "Xuất khẩu công nghệ",
+                    "C": "Tự động hóa toàn toàn",
+                    "D": "Cắt giảm chi phí nhân lực"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 331,
+                "q": "Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương xác định một trong các lĩnh vực công nghệ mới mà Quân đội hướng tới làm chủ là gì?",
+                "options": {
+                    "A": "Công nghiệp sạch",
+                    "B": "Công nghệ hàng",
+                    "C": "Công nghệ giấy tái chế",
+                    "D": "Kỹ thuật máy công nghiệp"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 332,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, việc phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số được coi là:",
+                "options": {
+                    "A": "Nhiệm vụ yếu",
+                    "B": "Một đột phá quan trọng hàng đầu",
+                    "C": "Hoạt động thử nghiệm",
+                    "D": "Dự án tạm thời"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 333,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, một trong các yêu cầu về nhân lực khoa học, công nghệ trong Quân đội là:",
+                "options": {
+                    "A": "Tuyển dụng lao động giỏi",
+                    "B": "Cán bộ có trình độ chuyên môn cao, phù hợp nhiệm vụ",
+                    "C": "Giảm thiểu số lượng nhân sự",
+                    "D": "Không yêu cầu ngoại ngữ"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 334,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, một trong các giải pháp về tài chính là:",
+                "options": {
+                    "A": "Phân cấp tự nghiên cứu",
+                    "B": "Hình thành quỹ đầu tư đặc biệt cho khởi nghiệp sáng tạo và chuyển đổi số",
+                    "C": "Chỉ sử dụng vốn ngân sách",
+                    "D": "Tăng vay vốn nước ngoài"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 335,
+                "q": "Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương xác định cơ quan nào có trách nhiệm thành lập Ban chỉ đạo về phát triển khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số trong Quân đội?",
+                "options": {
+                    "A": "Bộ Quốc phòng",
+                    "B": "Quân ủy Trung ương",
+                    "C": "Chính phủ",
+                    "D": "Bộ Khoa học và Công nghệ"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 336,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, trong tầm nhìn 2045, Quân đội sẽ:",
+                "options": {
+                    "A": "Quy trình sản xuất thiết bị quân sự",
+                    "B": "Hoàn thiện các hệ thống tự động hóa hỗ trợ chỉ huy",
+                    "C": "Chỉ sử dụng công nghệ nhập khẩu",
+                    "D": "Không đầu tư vào an ninh mạng"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 337,
+                "q": "Theo Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương, mục tiêu về chuyển đổi số trong hoạt động tác chiến là gì?",
+                "options": {
+                    "A": "Ứng dụng một phần công nghệ",
+                    "B": "Chỉ dùng trong huấn luyện",
+                    "C": "Tự động hóa chỉ huy, đánh giá, nhân rộng tới tác chiến",
+                    "D": "Giảm chi phí của công nghệ"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 338,
+                "q": "Nghị quyết số 3488-NQ/QUTW ngày 29/01/2025 Quân ủy Trung ương yêu cầu tăng cường hợp tác quốc tế để:",
+                "options": {
+                    "A": "Tham gia sản xuất công nghiệp dân dụng",
+                    "B": "Tiếp thu công nghệ tiên tiến, phát triển nguồn nhân lực chất lượng cao",
+                    "C": "Xuất khẩu lao động",
+                    "D": "Giảm phụ thuộc vào quốc phòng"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 339,
+                "q": "Nghị quyết số 59-NQ/TW của Bộ Chính trị về hội nhập quốc tế trong tình hình mới ban hành vào ngày nào?",
+                "options": {
+                    "A": "20/01/2025",
+                    "B": "24/01/2025",
+                    "C": "01/02/2025",
+                    "D": "15/02/2025"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 340,
+                "q": "Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị đề cập chủ trương lớn của Đảng về lĩnh vực nào?",
+                "options": {
+                    "A": "Hội nhập quốc tế trong tình hình mới",
+                    "B": "Phát triển kinh tế tri thức",
+                    "C": "Chuyển đổi số quốc gia",
+                    "D": "Cải cách hành chính"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 341,
+                "q": "Quan điểm chỉ đạo của Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới khẳng định hội nhập quốc tế là:",
+                "options": {
+                    "A": "Một nhiệm vụ tùy chọn",
+                    "B": "Một trong hai nhiệm vụ chiến lược cùng với xây dựng và bảo vệ Tổ quốc",
+                    "C": "Hội đồng công nghệ của ngành ngoại giao",
+                    "D": "Chỉ áp dụng trong lĩnh vực kinh tế"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 342,
+                "q": "Theo Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới, một trong những mục tiêu đến năm 2030 của hội nhập quốc tế là:",
+                "options": {
+                    "A": "Việt Nam trở thành trung tâm sản xuất tại khu vực",
+                    "B": "Việt Nam là quốc gia đang phát triển có thu nhập trung bình cao, hội nhập sâu rộng, hiệu quả",
+                    "C": "Việt Nam đứng đầu ASEAN về du lịch",
+                    "D": "Việt Nam là trung tâm nông nghiệp hữu cơ"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 343,
+                "q": "Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới yêu cầu bảo đảm hội nhập quốc tế gắn với:",
+                "options": {
+                    "A": "Mở rộng trung tâm xuất khẩu",
+                    "B": "Bảo đảm độc lập tự chủ, toàn vẹn lãnh thổ",
+                    "C": "Phát triển doanh nghiệp tư nhân",
+                    "D": "Đẩy mạnh đô thị hóa"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 344,
+                "q": "Một trong các định hướng quan trọng của Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới là:",
+                "options": {
+                    "A": "Kết hợp hội nhập đa phương và song phương một cách linh hoạt",
+                    "B": "Chỉ ưu tiên hợp tác đa phương",
+                    "C": "Chỉ ưu tiên hợp tác đa phương",
+                    "D": "Giảm hoạt động đối ngoại để tập trung trong nước"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 345,
+                "q": "Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới xác định trụ cột đối ngoại nào là then chốt trong hội nhập quốc tế?",
+                "options": {
+                    "A": "Ngoại giao kinh tế",
+                    "B": "Ngoại giao văn hóa",
+                    "C": "Ngoại giao thể thao",
+                    "D": "Ngoại giao nhân đạo"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 346,
+                "q": "Theo Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới, hội nhập quốc tế về quốc phòng, an ninh phải bảo đảm:",
+                "options": {
+                    "A": "Chủ động hợp tác quốc phòng",
+                    "B": "Kết hợp chặt chẽ với an ninh Tổ quốc, từ sớm, từ xa",
+                    "C": "Giám sự hiện diện của lực lượng quốc phòng",
+                    "D": "Chỉ tập trung bảo vệ biên giới trên bộ"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 347,
+                "q": "Theo Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới cần gắn với:",
+                "options": {
+                    "A": "Đẩy mạnh thông báo biến động sản phẩm Việt Nam",
+                    "B": "Xuất khẩu tài nguyên thô",
+                    "C": "Hạn chế ký kết FTA mới",
+                    "D": "Giảm thu hút đầu tư nước ngoài"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 348,
+                "q": "Một trong các nhiệm vụ, giải pháp Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới là:",
+                "options": {
+                    "A": "Hội nhập và nắm bắt, truyền thông dòng thông tin đối ngoại",
+                    "B": "Giảm hoạt động truyền thông đối ngoại",
+                    "C": "Tập trung truyền thông tin đối ngoại vào một lĩnh vực duy nhất",
+                    "D": "Hạn chế thông tin đối ngoại ra bên ngoài"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 349,
+                "q": "Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới yêu cầu xây dựng đội ngũ cán bộ làm công tác hội nhập quốc tế như thế nào?",
+                "options": {
+                    "A": "Bỏ gọn cán bộ, nhân viên",
+                    "B": "Có trình độ, bản lĩnh chính trị, năng lực chuyên môn cao",
+                    "C": "Chỉ cần kinh nghiệm thực tiễn",
+                    "D": "Chủ yếu dựa vào cán bộ địa phương"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 350,
+                "q": "Một trong các giải pháp của Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới là:",
+                "options": {
+                    "A": "Chỉ đẩy mạnh hội nhập quốc tế về khoa học - công nghệ nhằm",
+                    "B": "Tiếp thu tri thức mới, nâng cao năng lực đổi mới sáng tạo",
+                    "C": "Giảm nhập khẩu thiết bị",
+                    "D": "Bảo hộ tuyệt đối công nghệ trong nước"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 351,
+                "q": "Một trong các giải pháp của Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới là phát huy sức mạnh tổng hợp của ai?",
+                "options": {
+                    "A": "Hệ thống chính trị từ Trung ương đến địa phương",
+                    "B": "Chỉ cơ quan ngoại giao",
+                    "C": "Chỉ doanh nghiệp nhà nước",
+                    "D": "Chỉ lực lượng và trang"
+                },
+                "correct": "A"
+            },
+  {
+                "id": 352,
+                "q": "Hội nhập quốc tế về văn hóa, xã hội theo Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới nhằm mục đích gì?",
+                "options": {
+                    "A": "Tăng số lượng lễ hội",
+                    "B": "Giới thiệu, quảng bá giá trị văn hóa Việt Nam ra thế giới",
+                    "C": "Tập trung bảo tồn trong nước",
+                    "D": "Hạn chế giao lưu quốc tế"
+                },
+                "correct": "B"
+            },
+            
+{
+                "id": 353,
+                "q": "Nghị quyết số 59-NQ/TW ngày 24/01/2025 của Bộ Chính trị về hội nhập quốc tế trong tình hình mới đạt yêu cầu bảo đảm hội nhập quốc tế góp phần làm gì?",
+                "options": {
+                    "A": "Giữ vững môi trường hòa bình, ổn định, phát triển đất nước",
+                    "B": "Tăng dân số nhanh chóng",
+                    "C": "Thay đổi toàn bộ thể chế chính trị",
+                    "D": "Cắt giảm quan hệ với các nước"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 354,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới xác định mục tiêu đến năm 2030, Việt Nam có hệ thống pháp luật như thế nào?",
+                "options": {
+                    "A": "Thống nhất, dân chủ, công khai, minh bạch",
+                    "B": "Chỉ tập trung vào lĩnh vực kinh tế",
+                    "C": "Chủ yếu dựa vào luật quốc tế",
+                    "D": "Giới hạn ở một số ngành"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 355,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới xác định năm nào hoàn thành việc sửa đổi, bổ sung, ban hành mới văn bản pháp luật bảo đảm cơ sở pháp lý cho chính quyền 3 cấp?",
+                "options": {
+                    "A": "2025",
+                    "B": "2027",
+                    "C": "2028",
+                    "D": "2030"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 356,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới xác định năm 2028 mục tiêu là hoàn thiện hệ thống pháp luật về lĩnh vực nào để Việt Nam nằm trong nhóm 3 nước dẫn đầu ASEAN?",
+                "options": {
+                    "A": "Giáo dục",
+                    "B": "Y tế",
+                    "C": "Đầu tư, kinh doanh",
+                    "D": "Giao thông"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 357,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới xác định đến năm 2045, Việt Nam hướng tới hệ thống pháp luật như thế nào?",
+                "options": {
+                    "A": "Chỉ đáp ứng yêu cầu hội nhập",
+                    "B": "Chất lượng cao, hiện đại, tiệm cận chuẩn mực quốc tế",
+                    "C": "Giản lược để dễ áp dụng",
+                    "D": "Chủ yếu theo luật tập quán"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 358,
+                "q": "Một trong các nhiệm vụ theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới là bảo đảm sự lãnh đạo của ai trong công tác xây dựng pháp luật?",
+                "options": {
+                    "A": "Chính phủ",
+                    "B": "Quốc hội",
+                    "C": "Đảng",
+                    "D": "Mặt trận Tổ quốc"
+                },
+                "correct": "C"
+            },
+
+{
+                "id": 359,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, công tác xây dựng và thi hành pháp luật được xác định là gì trong hoàn thiện thể chế phát triển đất nước?",
+                "options": {
+                    "A": "Khâu phụ trợ",
+                    "B": "Đột phá của đột phá",
+                    "C": "Công cụ kiểm tra",
+                    "D": "Biện pháp tình thế"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 360,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, yêu cầu pháp luật phải bám sát điều gì để phát huy hiệu quả?",
+                "options": {
+                    "A": "Sáng kiến cá nhân",
+                    "B": "Thực tiễn",
+                    "C": "Quy định quốc tế",
+                    "D": "Kinh nghiệm lịch sử"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 361,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, một trong những giải pháp quan trọng là tạo cơ sở pháp lý cho khu vực kinh tế tư nhân tiếp cận các nguồn lực nào?",
+                "options": {
+                    "A": "Tài nguyên, lao động, đất đai",
+                    "B": "Vốn từ ngân sách nhà nước",
+                    "C": "Hỗ trợ quốc tế",
+                    "D": "Quỹ phúc lợi xã hội"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 362,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, công tác thi hành pháp luật cần gắn kết chặt chẽ với điều gì?",
+                "options": {
+                    "A": "Tuyên truyền chính sách",
+                    "B": "Xây dựng văn hóa tuân thủ pháp luật",
+                    "C": "Kế hoạch phát triển kinh tế",
+                    "D": "Hoạt động thanh tra"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 363,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, trong hợp tác quốc tế, Việt Nam cần tận dụng điều gì để phục vụ xây dựng pháp luật?",
+                "options": {
+                    "A": "Các cam kết quốc tế",
+                    "B": "Nguồn lao động giá rẻ",
+                    "C": "Quan hệ song phương",
+                    "D": "Viện trợ nhân đạo"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 364,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, giải pháp đột phá nâng cao chất lượng nguồn nhân lực pháp luật bao gồm việc gì?",
+                "options": {
+                    "A": "Áp dụng chế độ thu hút, đãi ngộ đặc thù",
+                    "B": "Cắt giảm số lượng nhân sự",
+                    "C": "Chỉ đào tạo nội bộ",
+                    "D": "Giảm chi ngân sách"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 365,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới đề ra việc ưu tiên nguồn lực xây dựng pháp luật gắn với yếu tố nào?",
+                "options": {
+                    "A": "Nhanh, đúng, đủ, gắn kết quả",
+                    "B": "Tiết kiệm tối đa",
+                    "C": "Giảm chi phí đào tạo",
+                    "D": "Hạn chế phạm vi áp dụng"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 366,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, chuyển đổi số trong công tác xây dựng pháp luật được nhấn mạnh ở việc ứng dụng công nghệ gì?",
+                "options": {
+                    "A": "Blockchain",
+                    "B": "Trí tuệ nhân tạo",
+                    "C": "Điện toán lượng tử",
+                    "D": "In 3D"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 367,
+                "q": "Theo Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới, cơ quan nào chịu trách nhiệm thường trực Ban Chỉ đạo Trung ương về hoàn thiện thể chế, pháp luật?",
+                "options": {
+                    "A": "Văn phòng Chính phủ",
+                    "B": "Bộ Tư pháp",
+                    "C": "Ủy ban Pháp luật của Quốc hội",
+                    "D": "Ban Tổ chức Trung ương"
+                },
+                "correct": "B"
+            },
+
+{
+                "id": 368,
+                "q": "Nghị quyết số 66-NQ/TW ngày 20/4/2025 của Bộ Chính trị về đổi mới công tác xây dựng và thi hành pháp luật đáp ứng yêu cầu phát triển đất nước trong kỷ nguyên mới xác định mục tiêu xây dựng pháp luật hướng tới bảo đảm điều gì cho người dân và doanh nghiệp?",
+                "options": {
+                    "A": "Quyền tự do kinh doanh và quyền sở hữu",
+                    "B": "Lợi nhuận tối đa",
+                    "C": "Miễn mọi loại thuế",
+                    "D": "Hạn chế cạnh tranh"
+                },
+                "correct": "A"
+            },
+
+{
+                "id": 369,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, mục tiêu đến năm 2030 là có bao nhiêu doanh nghiệp hoạt động hiệu quả?",
+                "options": {
+                    "A": "1 triệu",
+                    "B": "1,5 triệu",
+                    "C": "2 triệu",
+                    "D": "2,5 triệu"
+                },
+                "correct": "C"
+            },
+{
+                "id": 370,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, tỷ trọng đóng góp của khu vực kinh tế tư nhân vào GDP đến năm 2030 được đặt mục tiêu đạt khoảng:",
+                "options": {
+                    "A": "40 – 45%",
+                    "B": "55 – 60%",
+                    "C": "65 – 70%",
+                    "D": "50 – 55%"
+                },
+                "a": "C"
+            },
+            {
+                "id": 371,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, kinh tế tư nhân được xác định là:",
+                "options": {
+                    "A": "Động lực bổ sung cho kinh tế nhà nước",
+                    "B": "Một trong những động lực quan trọng của nền kinh tế thị trường định hướng XHCN",
+                    "C": "Thành phần kinh tế phụ trợ",
+                    "D": "Nguồn lực dự phòng"
+                },
+                "a": "B"
+            },
+            {
+                "id": 372,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân yêu cầu bảo đảm quyền sở hữu và quyền tự do kinh doanh theo:",
+                "options": {
+                    "A": "Quy định của địa phương",
+                    "B": "Thông tư của Bộ Tài chính",
+                    "C": "Quy định của pháp luật",
+                    "D": "Quy chế của hiệp hội"
+                },
+                "a": "C"
+            },
+            {
+                "id": 373,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân xác định mục tiêu đến năm 2030, năng suất lao động xã hội tăng bình quân hàng năm:",
+                "options": {
+                    "A": "4 – 5%",
+                    "B": "5 – 6%",
+                    "C": "5,5 – 6,5%",
+                    "D": "6 – 7%"
+                },
+                "a": "C"
+            },
+            {
+                "id": 374,
+                "q": "Một trong các giải pháp trọng tâm của theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân là:",
+                "options": {
+                    "A": "Giảm thuế nhập khẩu",
+                    "B": "Hoàn thiện thể chế, chính sách",
+                    "C": "Cắt giảm số lượng doanh nghiệp",
+                    "D": "Ngừng cấp phép ngành nghề mới"
+                },
+                "a": "B"
+            },
+            {
+                "id": 375,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, chính sách phát triển doanh nghiệp tư nhân khuyến khích:",
+                "options": {
+                    "A": "Giảm cạnh tranh",
+                    "B": "Độc quyền kinh doanh",
+                    "C": "Đổi mới sáng tạo, ứng dụng khoa học công nghệ",
+                    "D": "Hạn chế đầu tư ra nước ngoài"
+                },
+                "a": "C"
+            },
+            {
+                "id": 376,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, ban hành khung pháp lý thử nghiệm có kiểm soát đối với công nghệ mới, sản phẩm, dịch vụ, mô hình kinh doanh mới là gì?",
+                "options": {
+                    "A": "Sandbox",
+                    "B": "Incubator",
+                    "C": "Accelerator",
+                    "D": "Coworking space"
+                },
+                "a": "A"
+            },
+            {
+                "id": 377,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân đề ra nhiệm vụ tăng cường kết nối giữa doanh nghiệp tư nhân với:",
+                "options": {
+                    "A": "Doanh nghiệp nhà nước và doanh nghiệp FDI",
+                    "B": "Tổ chức chính trị-xã hội",
+                    "C": "Cơ quan báo chí",
+                    "D": "Cơ quan ngoại giao"
+                },
+                "a": "A"
+            },
+            {
+                "id": 378,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân xác định đến năm 2030, tỷ lệ doanh nghiệp sử dụng công nghệ tiên tiến, hiện đại đạt:",
+                "options": {
+                    "A": "30 – 35%",
+                    "B": "25 – 30%",
+                    "C": "35 – 40%",
+                    "D": "20 – 25%"
+                },
+                "a": "A"
+            },
+            {
+                "id": 379,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, một trong những nguyên tắc quản lý nhà nước với kinh tế tư nhân là:",
+                "options": {
+                    "A": "Hạn chế thanh tra",
+                    "B": "Thanh tra, kiểm tra đúng pháp luật, tránh chồng chéo",
+                    "C": "Tăng số lần kiểm tra",
+                    "D": "Kiểm soát mọi hoạt động đầu tư"
+                },
+                "a": "B"
+            },
+            {
+                "id": 380,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, kinh tế tư nhân cần phát triển gắn với mục tiêu:",
+                "options": {
+                    "A": "Tăng lợi nhuận cho cổ đông",
+                    "B": "Bảo đảm quốc phòng, an ninh, bảo vệ môi trường",
+                    "C": "Giảm thuế tuyệt đối",
+                    "D": "Tập trung ở khu vực thành thị"
+                },
+                "a": "B"
+            },
+            {
+                "id": 381,
+                "q": "Theo Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân, một trong các nhiệm vụ là đẩy mạnh phát triển thị trường trong nước thông qua:",
+                "options": {
+                    "A": "Kích tiền dùng ổn định",
+                    "B": "Đa dạng hóa kênh phân phối",
+                    "C": "Tăng giá hàng hóa",
+                    "D": "Cấm nhập khẩu"
+                },
+                "a": "B"
+            },
+            {
+                "id": 382,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân nhấn mạnh vai trò của ai trong phát triển kinh tế tư nhân?",
+                "options": {
+                    "A": "Cán bộ quản lý cấp xã",
+                    "B": "Doanh nhân",
+                    "C": "Nhà báo",
+                    "D": "Nhà đầu tư nước ngoài"
+                },
+                "a": "B"
+            },
+            {
+                "id": 383,
+                "q": "Nghị quyết số 68-NQ/TW ngày 04/5/2025 của Bộ Chính trị về phát triển kinh tế tư nhân xác định mục tiêu về tỷ lệ doanh nghiệp có hoạt động đổi mới sáng tạo vào năm 2030 là:",
+                "options": {
+                    "A": "25 – 30%",
+                    "B": "35 – 40%",
+                    "C": "40 – 45%",
+                    "D": "20 – 25%"
+                },
+                "a": "B"
+            },
+            {
+                "id": 384,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, công tác phòng thủ dân sự có trách nhiệm của ai trong hệ thống chính trị và xã hội?",
+                "options": {
+                    "A": "Lực lượng Quân đội và Dân quân tự vệ.",
+                    "B": "Cơ quan nhà nước và chính quyền địa phương.",
+                    "C": "Cả hệ thống chính trị, toàn xã hội, các cấp, các ngành và mọi công dân."
+                },
+                "a": "C"
+            },
+            {
+                "id": 385,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, lực lượng nòng cốt trong tổ chức thực hiện nhiệm vụ phòng thủ dân sự là:",
+                "options": {
+                    "A": "Lực lượng Công an và Dân quân tự vệ.",
+                    "B": "Quân đội nhân dân và Dân quân tự vệ.",
+                    "C": "Lực lượng cứu hộ, cứu nạn và y tế dự phòng.",
+                    "D": "Chính quyền địa phương các cấp."
+                },
+                "a": "B"
+            },
+            {
+                "id": 386,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, quan điểm chỉ đạo trong thực hiện là gì?",
+                "options": {
+                    "A": "Chủ động là chính, kết hợp với bị động.",
+                    "B": "Chuẩn bị từ sớm, từ xa; chủ động, hiệu quả.",
+                    "C": "Phản ứng nhanh, xử lý kịp thời.",
+                    "D": "Phân cấp quản lý và điều hành theo ngành."
+                },
+                "a": "B"
+            },
+            {
+                "id": 387,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, phòng thủ dân sự trong Quân đội được xác định là nhiệm vụ gì trong thời bình?",
+                "options": {
+                    "A": "Nhiệm vụ huấn luyện.",
+                    "B": "Nhiệm vụ chính trị – xã hội.",
+                    "C": "Nhiệm vụ phối hợp.",
+                    "D": "Nhiệm vụ chiến đấu."
+                },
+                "a": "D"
+            },
+            {
+                "id": 388,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, phương châm “bốn tại chỗ” trong phòng thủ dân sự gồm:",
+                "options": {
+                    "A": "Lực lượng tại chỗ, phương tiện tại chỗ, chỉ huy tại chỗ, hậu cần tại chỗ.",
+                    "B": "Dự báo tại chỗ, phương tiện tại chỗ, hậu cần tại chỗ, thông tin tại chỗ.",
+                    "C": "Lực lượng tại chỗ, thông tin tại chỗ, vận động tại chỗ, chỉ huy tại chỗ.",
+                    "D": "Chỉ huy tại chỗ, kinh phí tại chỗ, phối hợp tại chỗ, thông tin tại chỗ."
+                },
+                "a": "A"
+            },
+            {
+                "id": 389,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, quan điểm chỉ đạo phòng thủ dân sự “Bộ chỉ đạo, Quân khu điều hành, lấy cấp tỉnh làm trung tâm, lấy xã làm nòng cốt” thể hiện điều gì?",
+                "options": {
+                    "A": "Cơ chế phân quyền linh hoạt.",
+                    "B": "Cơ chế phối hợp liên ngành.",
+                    "C": "Cơ chế điều hành tập trung – liên kết từ trung ương đến cơ sở.",
+                    "D": "Cơ chế giám sát và phản ứng nhanh."
+                },
+                "a": "A"
+            },
+            {
+                "id": 390,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, tổ chức chỉ đạo phòng thủ dân sự cần được xây dựng theo hướng nào?",
+                "options": {
+                    "A": "Tập trung đầu mối, đa chức năng.",
+                    "B": "Tinh, gọn, thống nhất, hiệu quả.",
+                    "C": "Đa tầng, phân tán.",
+                    "D": "Kiêm nhiệm lồng ghép nhiều lĩnh vực."
+                },
+                "a": "B"
+            },
+            {
+                "id": 391,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, một trong những nhiệm vụ trọng tâm trong huấn luyện phòng thủ dân sự là gì?",
+                "options": {
+                    "A": "Giảm giờ học lý luận chính trị.",
+                    "B": "Bổ sung nội dung diễn lênh đội ngũ.",
+                    "C": "Đưa vào huấn luyện tình huống mới, trang thiết bị hiện đại.",
+                    "D": "Tập trung huấn luyện bắn súng cá nhân."
+                },
+                "a": "C"
+            },
+            {
+                "id": 392,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, trong phòng thủ dân sự, hợp tác quốc tế cần tuân thủ nguyên tắc nào?",
+                "options": {
+                    "A": "Linh hoạt theo chế độ mở rộng quan hệ.",
+                    "B": "Ưu tiên lợi ích quốc tế.",
+                    "C": "Tôn trọng chủ quyền, thể chế chính trị, lợi ích quốc gia - dân tộc.",
+                    "D": "Tăng cường viện trợ tài chính."
+                },
+                "a": "C"
+            },
+            {
+                "id": 393,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, đâu là mục tiêu chiến lược lâu dài trong phòng thủ dân sự?",
+                "options": {
+                    "A": "Hiện đại hóa phương tiện vũ khí.",
+                    "B": "Bảo đảm an toàn, giảm thiểu rủi ro cho người dân."
+                },
+                "a": "B"
+            },
+            {
+                "id": 394,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, công tác phòng thủ dân sự góp phần trực tiếp vào mục tiêu nào sau đây?",
+                "options": {
+                    "A": "Phát triển tài nguyên biển.",
+                    "B": "Tăng trưởng GDP.",
+                    "C": "Ổn định chính trị - xã hội và bảo vệ Nhân dân.",
+                    "D": "Bảo đảm an toàn giao thông."
+                },
+                "a": "C"
+            },
+            {
+                "id": 395,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, ai là người có trách nhiệm chính trong thực hiện nhiệm vụ phòng thủ dân sự tại đơn vị?",
+                "options": {
+                    "A": "Chính trị viên đơn vị.",
+                    "B": "Chỉ huy trưởng và người đứng đầu cấp ủy.",
+                    "C": "Bí thư đoàn thanh niên.",
+                    "D": "Cán bộ hậu cần."
+                },
+                "a": "B"
+            },
+            {
+                "id": 396,
+                "q": "Qua nghiên cứu Nghị quyết số 3589-NQ/QUTW, ngày 20/3/2025 của Quân uỷ Trung ương về nâng cao năng lực hoạt động phòng thủ dân sự đến năm 2030 và những năm tiếp theo, tại sao cần tăng cường nghiên cứu, ứng dụng khoa học công nghệ vào phòng thủ dân sự?",
+                "options": {
+                    "A": "Để cạnh tranh quốc tế.",
+                    "B": "Để tiết kiệm ngân sách.",
+                    "C": "Để chủ động trong phòng ngừa, ứng phó và phục hồi.",
+                    "D": "Để thay thế lực lượng tại chỗ."
+                },
+                "a": "C"
+            },
+            {
+                "id": 397,
+                "q": "Giám sát thường xuyên bao gồm các hình thức nào?",
+                "options": {
+                    "A": "Giám sát trực tiếp và giám sát đột xuất.",
+                    "B": "Giám sát trực tiếp và giám sát gián tiếp.",
+                    "C": "Giám sát chuyên đề và giám sát đột xuất.",
+                    "D": "Giám sát qua báo cáo và giám sát qua kiểm tra."
+                },
+                "a": "B"
+            },
+            {
+                "id": 398,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, thời hiệu xử lý kỷ luật được tính từ thời điểm nào?",
+                "options": {
+                    "A": "Từ thời điểm tổ chức đảng, đảng viên bị phát hiện vi phạm.",
+                    "B": "Từ thời điểm tổ chức đảng, đảng viên có hành vi vi phạm đến khi tổ chức đảng có thẩm quyền kết luận vi phạm đến mức phải xử lý kỷ luật.",
+                    "C": "Từ ngày công bố quyết định xử lý kỷ luật.",
+                    "D": "Từ khi ban hành thông báo vi phạm."
+                },
+                "a": "B"
+            },
+            {
+                "id": 399,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, đối với hành vi vi phạm không xác định được thời điểm chấm dứt thì thời điểm có hành vi vi phạm được tính từ khi nào?",
+                "options": {
+                    "A": "Từ thời điểm phát hiện.",
+                    "B": "Từ thời điểm có kết luận của cấp có thẩm quyền.",
+                    "C": "Từ thời điểm bắt đầu hành vi vi phạm.",
+                    "D": "Từ ngày vi phạm bị đưa ra ánh sáng."
+                },
+                "a": "B"
+            },
+            {
+                "id": 400,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, đối tượng kiểm tra của tổ chức đảng là ai/gồm những gì?",
+                "options": {
+                    "A": "Tổ chức đảng cấp dưới và đảng viên.",
+                    "B": "Tổ chức đảng cấp dưới, đảng viên và công dân.",
+                    "C": "Đảng viên và cán bộ, công chức.",
+                    "D": "Tổ chức đảng, đảng viên trong phạm vi điều chỉnh của Quy định."
+                },
+                "a": "A"
+            },
+            {
+                "id": 401,
+                "q": "Khái niệm 'khi có dấu hiệu vi phạm' trong Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng được hiểu là gì?",
+                "options": {
+                    "A": "Khi có đơn thư tố cáo vi phạm.",
+                    "B": "Khi có những thông tin, tài liệu, phản ánh, đối chiếu cho thấy tổ chức đảng hoặc đảng viên không tuân theo, không làm hoặc làm trái với chủ trương, quy định của Đảng, pháp luật của Nhà nước.",
+                    "C": "Khi đã có biên bản thanh tra, kiểm toán.",
+                    "D": "Khi có dư luận xấu trong quần chúng nhân dân."
+                },
+                "a": "B"
+            },
+            {
+                "id": 402,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, hình thức kỷ luật đối với tổ chức đảng vi phạm là gì?",
+                "options": {
+                    "A": "Khiển trách, cảnh cáo, cách chức.",
+                    "B": "Khiển trách, cảnh cáo, giải tán.",
+                    "C": "Khiển trách, cảnh cáo, đình chỉ sinh hoạt.",
+                    "D": "Khiển trách, cảnh cáo, tự giải thể."
+                },
+                "a": "B"
+            },
+            {
+                "id": 403,
+                "q": "Hình thức kỷ luật đối với đảng viên chính thức vi phạm kỷ luật của Đảng theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng là gì?",
+                "options": {
+                    "A": "Khiển trách, cảnh cáo, cách chức (nếu có chức vụ), khai trừ.",
+                    "B": "Khiển trách, cảnh cáo, đình chỉ sinh hoạt Đảng, khai trừ.",
+                    "C": "Khiển trách, cảnh cáo, chuyển công tác, khai trừ.",
+                    "D": "Khiển trách, cảnh cáo, kiểm điểm, khai trừ."
+                },
+                "a": "A"
+            },
+            {
+                "id": 404,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, khi kiểm tra tổ chức đảng cấp dưới có dấu hiệu vi phạm, đoàn kiểm tra được phép yêu cầu đối tượng kiểm tra những nội dung nào:",
+                "options": {
+                    "A": "Cung cấp tài liệu, báo cáo, giải trình những vấn đề có liên quan đến nội dung kiểm tra.",
+                    "B": "Cung cấp thông tin về tài sản, thu nhập của cá nhân và gia đình.",
+                    "C": "Cung cấp hồ sơ cá nhân và sơ yếu lý lịch.",
+                    "D": "Chỉ A và B"
+                },
+                "a": "A"
+            },
+            {
+                "id": 405,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, Ủy ban kiểm tra có trách nhiệm gì trong việc kiểm tra, giám sát việc kê khai tài sản, thu nhập của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Kiểm tra việc kê khai tài sản, thu nhập của cán bộ thuộc diện cấp ủy cùng cấp quản lý.",
+                    "B": "Kiểm tra, xác minh tài sản, thu nhập đối với cán bộ thuộc diện cấp ủy cùng cấp quản lý theo quy định của Trung ương.",
+                    "C": "Giám sát việc thực hiện quy định về kiểm soát tài sản, thu nhập của các tổ chức đảng, đảng viên.",
+                    "D": "Tất cả các phương án đã nêu."
+                },
+                "a": "A"
+            },
+            {
+                "id": 406,
+                "q": "Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, có điểm mới nào về phạm vi điều chỉnh và đối tượng áp dụng?",
+                "options": {
+                    "A": "Chỉ áp dụng cho tổ chức đảng và đảng viên đương nhiệm.",
+                    "B": "Mở rộng áp dụng đối với tổ chức đảng đã hết nhiệm kỳ, giải thể, chia tách, sáp nhập và đảng viên đã chuyển công tác, nghỉ việc, nghỉ hưu.",
+                    "C": "Chỉ áp dụng cho tổ chức đảng và đảng viên trong nước.",
+                    "D": "Mở rộng áp dụng cho cả công dân có liên quan."
+                },
+                "a": "B"
+            },
+            {
+                "id": 407,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, trường hợp nào thì không áp dụng thời hiệu xử lý kỷ luật?",
+                "options": {
+                    "A": "Vi phạm về nguyên tắc tập trung dân chủ.",
+                    "B": "Vi phạm về quan điểm chính trị nội bộ.",
+                    "C": "Vi phạm về tiêu chuẩn chính trị.",
+                    "D": "Vi phạm về tài chính, kinh tế, tham nhũng, tiêu cực gây hậu quả đặc biệt nghiêm trọng."
+                },
+                "a": "D"
+            },
+            {
+                "id": 408,
+                "q": "Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, đề cao vai trò chủ động của cấp ủy và Ủy ban Kiểm tra các cấp trong công tác kiểm tra, giám sát như thế nào?",
+                "options": {
+                    "A": "Phải chờ chỉ đạo của cấp trên mới được kiểm tra.",
+                    "B": "Chủ động kiểm tra khi phát hiện có dấu hiệu vi phạm, không chờ chỉ đạo.",
+                    "C": "Chỉ kiểm tra theo kế hoạch định kỳ.",
+                    "D": "Chỉ kiểm tra khi có đơn thư tố cáo."
+                },
+                "a": "B"
+            },
+            {
+                "id": 409,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, hình thức kỷ luật cách chức áp dụng đối với đối tượng nào?",
+                "options": {
+                    "A": "Tổ chức đảng và đảng viên chính thức.",
+                    "B": "Đảng viên chính thức và đảng viên dự bị.",
+                    "C": "Đảng viên đang giữ chức vụ.",
+                    "D": "Tổ chức đảng có chức vụ."
+                },
+                "a": "C"
+            },
+            {
+                "id": 410,
+                "q": "Điểm mới quan trọng về công tác kiểm tra tài chính của Đảng trong Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng là gì?",
+                "options": {
+                    "A": "Chỉ kiểm tra các quy định, quyết định tài chính của cấp ủy.",
+                    "B": "Chỉ kiểm tra hoạt động của cơ quan tài chính cấp ủy cùng cấp.",
+                    "C": "Quy định cụ thể công tác kiểm tra tài chính Đảng, bao gồm kiểm tra quy định, quyết định tài chính của cấp ủy, hoạt động của cơ quan tài chính cùng cấp và phối hợp với cơ quan Nhà nước kiểm tra ngân sách do Nhà nước cấp.",
+                    "D": "Không quy định cụ thể về kiểm tra tài chính."
+                },
+                "a": "C"
+            },
+            {
+                "id": 411,
+                "q": "Theo Hướng dẫn số 08-HD/TW ngày 10/6/2025 của Ban Bí thư Trung ương Đảng về thực hiện Quy định số 296-QĐ/TW, trong thời hạn bao nhiêu ngày kể từ ngày ký quyết định, kế hoạch kiểm tra, giám sát, phải công bố đến đối tượng kiểm tra, giám sát?",
+                "options": {
+                    "A": "3 ngày.",
+                    "B": "5 ngày.",
+                    "C": "7 ngày.",
+                    "D": "10 ngày."
+                },
+                "a": "C"
+            },
+            {
+                "id": 412,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng và Hướng dẫn số 08, trong thực hiện nhiệm vụ giám sát thường xuyên, cấp ủy, ban thường vụ cấp ủy trực thuộc Trung ương có trách nhiệm mời ai dự các cuộc họp?",
+                "options": {
+                    "A": "Thành viên Ủy ban Kiểm tra Trung ương.",
+                    "B": "Cán bộ được phân công theo dõi địa bàn.",
+                    "C": "Đại diện các cơ quan tham mưu, giúp việc.",
+                    "D": "Cả A và B"
+                },
+                "a": "B"
+            },
+            {
+                "id": 413,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, Chi bộ chủ yếu giám sát thường xuyên đối với đảng viên ở đâu?",
+                "options": {
+                    "A": "Nơi công tác, sinh hoạt.",
+                    "B": "Nơi cư trú.",
+                    "C": "Nơi cư trú và nơi công tác",
+                    "D": "Nơi công tác, sinh hoạt và nơi cư trú."
+                },
+                "a": "D"
+            },
+            {
+                "id": 414,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, Chi bộ có chi ủy, chi bộ có trên 30 đảng viên và đảng viên hoạt động phân tán hoặc có nhiều tổ đảng trực thuộc thì thực hiện giám sát theo hình thức nào?",
+                "options": {
+                    "A": "Giám sát trực tiếp.",
+                    "B": "Giám sát gián tiếp.",
+                    "C": "Giám sát theo chuyên đề.",
+                    "D": "Tự kiểm tra."
+                },
+                "a": "C"
+            },
+            {
+                "id": 415,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, Ủy ban Kiểm tra các cấp có quyền hạn gì?",
+                "options": {
+                    "A": "Chỉ đạo công tác kiểm tra, giám sát cấp dưới",
+                    "B": "Quyết định kỷ luật tổ chức đảng trực thuộc cấp ủy cấp dưới (tổ chức đảng cách một cấp trở xuống) khi thực hiện nhiệm vụ kiểm tra khi có dấu hiệu vi phạm, giải quyết tố cáo, xem xét thi hành kỷ luật; xem xét thi hành kỷ luật đảng viên là cấp ủy viên cấp dưới, đảng viên thuộc diện cấp ủy cấp dưới quản lý hoặc kiểm tra khi có dấu hiệu vi phạm.",
+                    "C": "Cả A và B",
+                    "D": "Chỉ tham mưu cho cấp ủy"
+                },
+                "a": "C"
+            },
+  {
+                "id": 416,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, cán bộ, đảng viên đang trong thời gian giải quyết tố cáo, khiếu nại kỷ luật, kiểm tra khi có dấu hiệu vi phạm, xem xét, xử lý kỷ luật thì chưa thực hiện các việc gì?",
+                "options": {
+                    "A": "Quy hoạch, điều động, luân chuyển, bổ nhiệm, biệt phái, đào tạo, thi nâng ngạch, bậc, thăng quân hàm, phong, thăng, giáng cấp bậc hàm",
+                    "B": "Đào tạo, thi nâng ngạch, bậc, phong, thăng quân hàm.",
+                    "C": "Khen thưởng, từ chức hoặc thôi việc",
+                    "D": "Tất cả các phương án đã nêu."
+                },
+                "a": "D"
+            },
+            {
+                "id": 417,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, khi đã có báo cáo đề nghị xử lý kỷ luật tổ chức đảng, đảng viên có vi phạm nhưng phát hiện có thêm các tình tiết liên quan hoặc hành vi vi phạm khác thì tổ chức đảng có thẩm quyền sẽ làm gì?",
+                "options": {
+                    "A": "Chuyển hồ sơ cho cấp trên xử lý.",
+                    "B": "Tiếp tục xem xét, quyết định hoặc giao đoàn (tổ) kiểm tra, thẩm tra, xác minh bổ sung nội dung vi phạm để đề nghị xem xét lại hình thức kỷ luật.",
+                    "C": "Đình chỉ việc xử lý.",
+                    "D": "Bỏ qua các tình tiết mới."
+                },
+                "a": "B"
+            },
+            {
+                "id": 418,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, đảng viên bị khiển trách sẽ bị hạn chế gì?",
+                "options": {
+                    "A": "Không được bầu cử vào cấp uỷ, bố trí làm cán bộ chủ chốt, làm đại biểu Quốc hội, Hội đồng nhân dân các cấp",
+                    "B": "Không được quy hoạch, bổ nhiệm, giới thiệu bầu vào các chức vụ tương đương hoặc cao hơn khi quyết định kỷ luật chưa hết hiệu lực",
+                    "C": "Cả a và b",
+                    "D": "Chỉ bị cảnh cáo"
+                },
+                "a": "C"
+            },
+            {
+                "id": 419,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, đơn tố cáo của công dân (kể cả đảng viên) phải đảm bảo những yêu cầu gì?",
+                "options": {
+                    "A": "Rõ họ tên, địa chỉ, ký tên hoặc điểm chỉ.",
+                    "B": "Trình bày trung thực sự việc, chịu trách nhiệm về nội dung tố cáo và bằng chứng (nếu có).",
+                    "C": "Tờ tố cáo trực tiếp phải được ghi lại thành văn bản và người tố cáo ký tên hoặc điểm chỉ.",
+                    "D": "Tất cả các phương án đã nêu."
+                },
+                "a": "D"
+            },
+            {
+                "id": 420,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, nếu người tố cáo xin rút đơn tố cáo hoặc một số nội dung trong đơn tố cáo, nhưng tổ chức đảng có thẩm quyền xác định nội dung tố cáo có cơ sở thì thực hiện như thế nào?",
+                "options": {
+                    "A": "Chấm dứt việc giải quyết tố cáo.",
+                    "B": "Thực hiện tạm dừng để phục vụ công tác kiểm tra, giám sát.",
+                    "C": "Yêu cầu người tố cáo cung cấp thêm bằng chứng.",
+                    "D": "Thông báo cho người tố cáo rằng đơn không được giải quyết."
+                },
+                "a": "B"
+            },
+            {
+                "id": 421,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, nguyên tắc giải quyết tố cáo là gì?",
+                "options": {
+                    "A": "Khách quan, công khai (không phải tất cả, có những thông tin bí mật)",
+                    "B": "Bảo vệ người tố cáo",
+                    "C": "Tuân thủ quy trình (chỉ do cấp quy trình)",
+                    "D": "Tất cả các đáp án đã nêu"
+                },
+                "a": "D"
+            },
+            {
+                "id": 422,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, đơn tố cáo nặc danh có được giải quyết không?",
+                "options": {
+                    "A": "Có, nếu nội dung rõ ràng, nêu cụ thể địa chỉ, đối tượng bị tố cáo thì tổ chức đảng có thẩm quyền giao nắm tình hình để kiểm tra hoặc giám sát chuyên đề.",
+                    "B": "Không",
+                    "C": "Chỉ khi có chữ ký",
+                    "D": "Tùy từng trường hợp"
+                },
+                "a": "A"
+            },
+            {
+                "id": 423,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, việc giải quyết khiếu nại kỷ luật đảng thông thường được tiến hành như thế nào?",
+                "options": {
+                    "A": "Từ trên xuống dưới.",
+                    "B": "Tuân thủ một lần.",
+                    "C": "Giao tiếp tục cho Ủy ban Kiểm tra Trung ương.",
+                    "D": "Theo đề nghị của cấp ủy."
+                },
+                "a": "B"
+            },
+            {
+                "id": 424,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, thẩm quyền giải quyết khiếu nại kỷ luật lần đầu thuộc về ai?",
+                "options": {
+                    "A": "Ủy ban kiểm tra cấp trên trực tiếp (đối với đảng viên là cán bộ thuộc diện cấp ủy cấp trên quản lý bị chi bộ kỷ luật).",
+                    "B": "Ban Thường vụ cấp uỷ hoặc cấp uỷ (trong nhiều trường hợp, ví dụ: tổ chức đảng bị kỷ luật khiển trách, cảnh cáo có khiếu nại).",
+                    "C": "Đảng ủy cơ sở hoặc ban thường vụ đảng ủy cơ sở (nơi không có ban thường vụ đảng ủy là đảng ủy cơ sở).",
+                    "D": "Tất cả các đáp án đã nêu."
+                },
+                "a": "D"
+            },
+            {
+                "id": 425,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, khi giải quyết khiếu nại, việc bỏ phiếu kín áp dụng khi nào?",
+                "options": {
+                    "A": "Khi biểu quyết hình thức kỷ luật (tăng, giảm hoặc xóa hình thức kỷ luật)",
+                    "B": "Luôn thực áp dụng",
+                    "C": "Chỉ khi đảng viên yêu cầu",
+                    "D": "Không áp dụng"
+                },
+                "a": "A"
+            },
+            {
+                "id": 426,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, đơn vừa khiếu nại vừa tố cáo sẽ được xử lý thế nào?",
+                "options": {
+                    "A": "Chỉ giải quyết nội dung khiếu nại và hướng dẫn người khiếu nại thực hiện quyền tố cáo theo quy định.",
+                    "B": "Giải quyết cả hai",
+                    "C": "Chuyển cơ quan khác",
+                    "D": "Yêu cầu bổ sung thông tin"
+                },
+                "a": "A"
+            },
+            {
+                "id": 427,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, trường hợp cơ quan pháp luật ra quyết định khởi tố, truy nã, tòa án có thông báo thì tổ chức đảng phải làm gì?",
+                "options": {
+                    "A": "Yêu cầu đảng viên làm bản tường trình.",
+                    "B": "Đình chỉ sinh hoạt đảng.",
+                    "C": "Báo cáo lên cấp trên trực tiếp.",
+                    "D": "Chờ kết quả xử lý của tòa án."
+                },
+                "a": "B"
+            },
+            {
+                "id": 428,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, hoạt động kiểm soát tài sản, thu nhập là gì?",
+                "options": {
+                    "A": "Hoạt động do cá nhân tự kê khai và công khai thông tin tài sản, thu nhập của mình.",
+                    "B": "Hoạt động của cơ quan kiểm soát tài sản, thu nhập nhằm kết luận về tính trung thực, đầy đủ, rõ ràng đối với việc kê khai tài sản, thu nhập, biến động về tài sản, thu nhập, nguồn gốc của tài sản, thu nhập tăng thêm của người có nghĩa vụ kê khai.",
+                    "C": "Hoạt động rà soát ngẫu nhiên tài sản của cán bộ, đảng viên để phát hiện vi phạm.",
+                    "D": "Hoạt động tự nguyện của các tổ chức xã hội nhằm giám sát tài sản của công chức."
+                },
+                "a": "B"
+            },
+            {
+                "id": 429,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08 có điểm mới đáng chú ý nào về phạm vi đối tượng áp dụng trong công tác kiểm tra, giám sát?",
+                "options": {
+                    "A": "Chỉ áp dụng đối với tổ chức đảng và đảng viên đương nhiệm.",
+                    "B": "Mở rộng phạm vi áp dụng đối với tổ chức đảng đã hết nhiệm kỳ, đã giải thể, hoặc thay đổi, và đảng viên đã chuyển công tác, nghỉ việc, nghỉ hưu.",
+                    "C": "Thu hẹp đối tượng áp dụng để tập trung vào các chức danh lãnh đạo chủ chốt.",
+                    "D": "Không có sự thay đổi đáng kể so với các quy định trước đây."
+                },
+                "a": "B"
+            },
+            {
+                "id": 430,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, cơ quan kiểm tra, giám sát có quyền hạn nào trong việc yêu cầu cung cấp thông tin, tài liệu liên quan đến tài sản, thu nhập?",
+                "options": {
+                    "A": "Chỉ có quyền yêu cầu khi có chỉ đạo trực tiếp từ cấp trên.",
+                    "B": "Có quyền yêu cầu tổ chức đảng, đảng viên báo cáo, cung cấp tài liệu, thông tin liên quan đến công tác kiểm tra, giám sát, bao gồm cả tài sản, thu nhập.",
+                    "C": "Không có quyền yêu cầu thông tin chi tiết về tài sản, thu nhập của cá nhân.",
+                    "D": "Chỉ được yêu cầu cung cấp thông tin nếu có bằng chứng rõ ràng về vi phạm."
+                },
+                "a": "B"
+            },
+            {
+                "id": 431,
+                "q": "Khi phát hiện dấu hiệu vi phạm liên quan đến tài sản, thu nhập của đảng viên, theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, cấp ủy và Ủy ban kiểm tra các cấp có quyền kiểm tra như thế nào?",
+                "options": {
+                    "A": "Phải chờ thực hiện theo kế hoạch kiểm tra.",
+                    "B": "Được kiểm tra khi có đơn tố cáo hoặc phản ánh.",
+                    "C": "Có quyền chủ động kiểm tra khi phát hiện có dấu hiệu vi phạm, không chờ chỉ đạo.",
+                    "D": "Chỉ được kiểm tra khi có yêu cầu từ cơ quan điều tra."
+                },
+                "a": "C"
+            },
+            {
+                "id": 432,
+                "q": "Mục đích của công tác kiểm soát tài sản, thu nhập cá nhân theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08 là gì?",
+                "options": {
+                    "A": "Nhằm tăng cường số liệu thống kê về tài sản của cán bộ, đảng viên.",
+                    "B": "Để kết luận về tính trung thực, đầy đủ, rõ ràng đối với việc kê khai tài sản, thu nhập và nguồn gốc tài sản tăng thêm, góp phần phòng, chống tham nhũng, tiêu cực.",
+                    "C": "Để công khai tất cả thông tin tài sản, thu nhập cá nhân cho công chúng.",
+                    "D": "Nhằm xác định mức độ giàu có của từng cá nhân trong hệ thống."
+                },
+                "a": "B"
+            },
+            {
+                "id": 433,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08, cơ quan, đơn vị nào dưới đây không phải là chủ thể có thẩm quyền kiểm soát tài sản, thu nhập của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Ủy ban kiểm tra các cấp.",
+                    "B": "Cơ quan điều tra.",
+                    "C": "Cơ quan thanh tra Quốc phòng.",
+                    "D": "Cơ quan Kiểm toán nhà nước."
+                },
+                "a": "D"
+            },
+            {
+                "id": 434,
+                "q": "Việc kiểm soát tài sản, thu nhập của người có nghĩa vụ kê khai được thực hiện chủ yếu bởi chủ thể nào theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng và Hướng dẫn số 08 của Đảng?",
+                "options": {
+                    "A": "Cơ quan quản lý trực tiếp người kê khai.",
+                    "B": "Các cơ quan chuyên trách về phòng, chống tham nhũng theo quy định của pháp luật.",
+                    "C": "Ủy ban kiểm tra của Đảng (từ cấp trên trực tiếp cơ sở).",
+                    "D": "Thanh tra Quốc phòng."
+                },
+                "a": "C"
+            },
+            {
+                "id": 435,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng về công tác kiểm tra, giám sát, kỷ luật của Đảng, Ủy ban kiểm tra có trách nhiệm gì trong việc kiểm tra, giám sát việc kê khai tài sản, thu nhập của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Kiểm tra việc kê khai tài sản, thu nhập của cán bộ thuộc diện cấp ủy cùng cấp quản lý.",
+                    "B": "Kiểm tra, xác minh tài sản, thu nhập đối với cán bộ thuộc diện cấp ủy cùng cấp quản lý theo quy định của Trung ương.",
+                    "C": "Giám sát việc thực hiện quy định về kiểm soát tài sản, thu nhập của các tổ chức đảng, đảng viên.",
+                    "D": "Tất cả các phương án trên."
+                },
+                "a": "D"
+            },
+            {
+                "id": 436,
+                "q": "Khi phân công, điều động chủ nhiệm ủy ban kiểm tra sang công tác khác hoặc hội nghị cấp ủy chưa bầu được chức danh chủ nhiệm, ai sẽ điều hành công việc và ký văn bản?",
+                "options": {
+                    "A": "Một đồng chí phó chủ nhiệm hoặc thành viên ủy ban (nếu không có phó chủ nhiệm).",
+                    "B": "Bí thư cấp ủy.",
+                    "C": "Đại diện Ban Tổ chức cấp ủy.",
+                    "D": "Chủ nhiệm Ủy ban Kiểm tra cấp trên trực tiếp."
+                },
+                "a": "A"
+            },
+            {
+                "id": 437,
+                "q": "Trong thời hạn bao nhiêu ngày, kể từ ngày nhận được văn bản trao đổi, xin ý kiến về nhân sự, ủy ban kiểm tra cấp trên phải có văn bản trả lời?",
+                "options": {
+                    "A": "3 ngày.",
+                    "B": "5 ngày.",
+                    "C": "7 ngày.",
+                    "D": "10 ngày."
+                },
+                "a": "B"
+            },
+            {
+                "id": 438,
+                "q": "Đảng viên là nữ giới đang trong thời gian mang thai, nghỉ thai sản, đang nuôi con dưới bao nhiêu tháng tuổi hoặc đảng viên là nam giới (trong trường hợp vợ chết hoặc vì lý do khách quan, bất khả kháng khác) đang nuôi con dưới 12 tháng tuổi thì chưa xem xét, xử lý kỷ luật?",
+                "options": {
+                    "A": "Dưới 6 tháng tuổi.",
+                    "B": "Dưới 12 tháng tuổi.",
+                    "C": "Dưới 18 tháng tuổi.",
+                    "D": "Dưới 24 tháng tuổi."
+                },
+                "a": "B"
+            },
+            {
+                "id": 439,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết đâu là chủ thể lãnh đạo, chỉ đạo công tác kiểm tra, giám sát của cấp uỷ, tổ chức đảng?",
+                "options": {
+                    "A": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, cấp ủy, ban thường vụ cấp ủy các cấp.",
+                    "B": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, cấp ủy, chi bộ, ban thường vụ cấp ủy các cấp.",
+                    "C": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, ban thường vụ cấp ủy các cấp.",
+                    "D": "Ban Chấp hành Trung ương, Ban Bí thư, cấp ủy, ban thường vụ cấp ủy các cấp."
+                },
+                "a": "A"
+            },
+            {
+                "id": 440,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết cấp uỷ, tổ chức đảng có mấy nội dung trong lãnh đạo, chỉ đạo công tác kiểm tra, giám sát?",
+                "options": {
+                    "A": "8",
+                    "B": "9",
+                    "C": "10"
+                },
+                "a": "C"
+            },
+            {
+                "id": 441,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết đâu là chủ thể kiểm tra của cấp uỷ, tổ chức đảng?",
+                "options": {
+                    "A": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, ban thường vụ cấp ủy các cấp.",
+                    "B": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, cấp ủy, ban thường vụ cấp ủy các cấp.",
+                    "C": "Ban Chấp hành Trung ương, Bộ Chính trị, Ban Bí thư, cấp ủy, chi bộ, ban thường vụ cấp ủy các cấp.",
+                    "D": "Ban Chấp hành Trung ương, Ban Bí thư, cấp ủy, chi bộ, ban thường vụ cấp ủy các cấp."
+                },
+                "a": "C"
+            },
+            {
+                "id": 442,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết đâu là đối tượng kiểm tra?",
+                "options": {
+                    "A": "Đảng viên thuộc phạm vi quản lý, trước hết là cán bộ thuộc diện Bộ Chính trị, Ban Bí thư, chi bộ, cấp ủy cấp mình quản lý, cán bộ giữ cương vị chủ chốt hoặc được giao các nhiệm vụ quan trọng.",
+                    "B": "Đảng viên thuộc phạm vi quản lý, trước hết là cán bộ thuộc diện Bộ Chính trị, Ban Bí thư, cấp ủy cấp mình quản lý, cán bộ giữ cương vị chủ chốt.",
+                    "C": "Đảng viên thuộc phạm vi quản lý, trước hết là cán bộ thuộc diện Bộ Chính trị, Ban Bí thư, cấp ủy cấp mình quản lý, cán bộ giữ cương vị chủ chốt hoặc được giao các nhiệm vụ quan trọng.",
+                    "D": "Đảng viên thuộc phạm vi quản lý, trước hết là cán bộ thuộc diện cấp ủy cấp mình quản lý, cán bộ giữ cương vị chủ chốt hoặc được giao các nhiệm vụ quan trọng."
+                },
+                "a": "C"
+            },
+            {
+                "id": 443,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết đối với tổ chức đảng có mấy nội dung kiểm tra?",
+                "options": {
+                    "A": "8",
+                    "B": "9",
+                    "C": "10"
+                },
+                "a": "B"
+            },
+            {
+                "id": 444,
+                "q": "Qua nghiên cứu Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng khoá XIII về công tác kiểm tra, giám sát và kỷ luật của Đảng, đồng chí cho biết nội dung kiểm tra đối với đảng viên?",
+                "options": {
+                    "A": "Tiêu chuẩn đảng viên, tiêu chuẩn cấp ủy viên, việc thực hiện nhiệm vụ đảng viên và những điều đảng viên không được làm.",
+                    "B": "Tiêu chuẩn đảng viên, tiêu chuẩn cấp ủy viên và việc thực hiện nhiệm vụ đảng viên.",
+                    "C": "Tiêu chuẩn đảng viên, tiêu chuẩn cấp ủy viên, nhiệm vụ chi bộ giao, việc thực hiện nhiệm vụ đảng viên và những điều đảng viên không được làm.",
+                    "D": "Tiêu chuẩn đảng viên, tiêu chuẩn cấp ủy viên, nhiệm vụ chi bộ giao và những điều đảng viên không được làm."
+                },
+                "a": "B"
+            },
+            {
+                "id": 445,
+                "q": "Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị quy định thời gian chấm dứt hiệu lực kỷ luật đối với tổ chức đảng, đảng viên (trừ hình thức khai trừ đối với đảng viên, giải tán đối với tổ chức đảng) như thế nào?",
+                "options": {
+                    "A": "09 tháng",
+                    "B": "12 tháng",
+                    "C": "18 tháng",
+                    "D": "24 tháng"
+                },
+                "a": "B"
+            },
+            {
+                "id": 446,
+                "q": "Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị quy định thời gian phải kỷ luật về hành chính, đoàn thể (nếu có) đối với đảng viên sau khi công bố quyết định kỷ luật về Đảng như thế nào?",
+                "options": {
+                    "A": "15 ngày",
+                    "B": "30 ngày",
+                    "C": "45 ngày",
+                    "D": "60 ngày"
+                },
+                "a": "B"
+            },
+            {
+                "id": 447,
+                "q": "Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị quy định thời hiệu kỷ luật đảng viên vi phạm đến mức áp dụng hình thức khiển trách như thế nào?",
+                "options": {
+                    "A": "03 năm",
+                    "B": "05 năm",
+                    "C": "07 năm",
+                    "D": "10 năm"
+                },
+                "a": "B"
+            },
+            {
+                "id": 448,
+                "q": "Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị quy định thời hiệu kỷ luật đảng viên vi phạm đến mức áp dụng hình thức cảnh cáo như thế nào?",
+                "options": {
+                    "A": "03 năm",
+                    "B": "05 năm",
+                    "C": "10 năm",
+                    "D": "15 năm"
+                },
+                "a": "C"
+            },
+            {
+                "id": 449,
+                "q": "Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị quy định trường hợp nào được chưa kỷ luật, không hoặc miễn kỷ luật?",
+                "options": {
+                    "A": "Đảng viên đang nuôi con dưới 24 tháng tuổi.",
+                    "B": "Đảng viên bị bệnh đang điều trị.",
+                    "C": "Đảng viên là nữ giới đang nuôi con dưới 24 tháng tuổi.",
+                    "D": "Đảng viên bị bệnh nặng đang điều trị nội trú tại bệnh viện."
+                },
+                "a": "D"
+            },
+            {
+                "id": 450,
+                "q": "Theo Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị, hậu quả do vi phạm của tổ chức đảng gây ra là?",
+                "options": {
+                    "A": "Vi phạm gây hậu quả ít nghiêm trọng",
+                    "B": "Vi phạm gây hậu quả nghiêm trọng",
+                    "C": "Vi phạm gây hậu quả đặc biệt nghiêm trọng",
+                    "D": "Tất cả các phương án đã nêu"
+                },
+                "a": "D"
+            },
+            {
+                "id": 451,
+                "q": "Theo Quy định số 69-QĐ/TW ngày 06/7/2022 của Bộ Chính trị, hậu quả do vi phạm của đảng viên gây ra là?",
+                "options": {
+                    "A": "Vi phạm gây hậu quả ít nghiêm trọng",
+                    "B": "Vi phạm gây hậu quả nghiêm trọng",
+                    "C": "Vi phạm gây hậu quả rất nghiêm trọng",
+                    "D": "Tất cả các phương án đã nêu"
+                },
+                "a": "D"
+            },
+            {
+                "id": 452,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng Khóa XIII, hình thức kỷ luật đối với đảng viên chính thức gồm?",
+                "options": {
+                    "A": "Phê bình, khiển trách, cảnh cáo, cách chức (nếu có chức vụ)",
+                    "B": "Khiển trách, cảnh cáo, cách chức (nếu có chức vụ), khai trừ",
+                    "C": "Khiển trách, cảnh cáo, khai trừ",
+                    "D": "Khiển trách, cảnh cáo, xóa tên trong danh sách đảng viên"
+                },
+                "a": "B"
+            },
+            {
+                "id": 453,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng Khóa XIII, hình thức kỷ luật đối với đảng viên dự bị gồm?",
+                "options": {
+                    "A": "Khiển trách, cảnh cáo, xóa tên trong danh sách đảng viên",
+                    "B": "Phê bình, khiển trách, cảnh cáo",
+                    "C": "Khiển trách, cảnh cáo",
+                    "D": "Khiển trách, cảnh cáo, khai trừ"
+                },
+                "a": "C"
+            },
+            {
+                "id": 454,
+                "q": "Theo Quy định số 296-QĐ/TW ngày 30/5/2025 của Ban Chấp hành Trung ương Đảng Khóa XIII, hình thức kỷ luật đối với tổ chức đảng gồm?",
+                "options": {
+                    "A": "Khiển trách, cảnh cáo, giải tán",
+                    "B": "Phê bình, khiển trách, cảnh cáo",
+                    "C": "Phê bình nghiêm khắc, khiển trách, cảnh cáo",
+                    "D": "Phê bình nhắc nhở, khiển trách, cảnh cáo"
+                },
+                "a": "A"
+            },
+            {
+                "id": 455,
+                "q": "Khái quát truyền thống của Quân đội nhân dân Việt Nam là gì?",
+                "options": {
+                    "A": "Trung với Đảng, hiếu với dân, sẵn sàng chiến đấu, hy sinh, vì độc lập tự do của Tổ quốc, vì chủ nghĩa xã hội. Nhiệm vụ nào cũng hoàn thành, khó khăn nào cũng vượt qua, kẻ thù nào cũng đánh thắng.",
+                    "B": "Xây dựng và phát huy sức mạnh toàn dân.",
+                    "C": "Lấy tuyên truyền, giáo dục, vận động, thuyết phục là chính.",
+                    "D": "Tổ chức lực lượng rộng khắp, mạng lưới liên hoàn, khép kín."
+                },
+                "a": "A"
+            },
+{
+                "id": 456,
+                "q": "Chủ đề phong trào thi đua Quyết thắng năm 2025 trong toàn quân là gì?",
+                "options": {
+                    "A": "Đoàn kết, sáng tạo, kỷ cương, nêu gương, quyết thắng.",
+                    "B": "Đoàn kết, dân chủ, nêu gương, kỷ cương, quyết thắng.",
+                    "C": "Dân chủ, đoàn kết, kỷ cương, sáng tạo, quyết thắng.",
+                    "D": "Dân chủ, đoàn kết, mẫu mực, kỷ cương, Quyết thắng."
+                },
+                "correct": "C"
+            },
+            {
+                "id": 457,
+                "q": "Chủ đề \"Năm an toàn giao thông 2025\" là?",
+                "options": {
+                    "A": "An toàn giao thông giao là trách nhiệm của mọi người",
+                    "B": "Thượng tôn pháp luật để xây dựng văn hoá giao thông an toàn",
+                    "C": "Bảo đảm trật tự, an toàn giao thông và chống ùn tắc giao thông",
+                    "D": "Hành trình an toàn, kiến tạo tương lai"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 458,
+                "q": "Bảo vệ vững chắc Tổ quốc Việt Nam xã hội chủ nghĩa từ sớm, từ xa, trên tất cả các yếu tố cấu thành Tổ quốc gồm?",
+                "options": {
+                    "A": "Đất liền, biển đảo, trên không, vũ trụ, biên giới và không gian mạng.",
+                    "B": "Đất liền, biển đảo, vũ trụ và không gian mạng.",
+                    "C": "Đất liền, biển đảo, trên không, vũ trụ và không gian mạng.",
+                    "D": "Đất liền, biển đảo, trên không, vũ trụ."
+                },
+                "correct": "C"
+            },
+            {
+                "id": 459,
+                "q": "Đối tượng tác chiến của Quân đội ta hiện nay?",
+                "options": {
+                    "A": "Bất cứ lực lượng nào có âm mưu và hành động chống phá mục tiêu của cách mạng nước ta; tiến hành chiến tranh xâm lược; \"diễn biến hòa bình\", bạo loạn lật đổ, bạo loạn vũ trang ở nước ta.",
+                    "B": "Bất cứ lực lượng nào có âm mưu và hành động chống phá mục tiêu của cách mạng nước ta; tiến hành chiến tranh xâm lược; \"diễn biến hòa bình\", bạo loạn lật đổ, bạo loạn vũ trang ở nước ta; xâm phạm độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ, lợi ích quốc gia, dân tộc của Việt Nam.",
+                    "C": "Chủ nghĩa đế quốc và các thế lực thù địch.",
+                    "D": "Mỹ và đồng minh."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 460,
+                "q": "Đối tượng đối lập về ý thức hệ có âm mưu và hành động tập trung xóa bỏ chủ nghĩa xã hội ở nước ta là?",
+                "options": {
+                    "A": "Chủ nghĩa đế quốc và các thế lực thù địch.",
+                    "B": "Chủ nghĩa dân tộc hẹp hòi, đã có biểu hiện xâm phạm chủ quyền, quyền chủ quyền lãnh thổ của nước ta.",
+                    "C": "Các nước bị lôi kéo, thao túng, can thiệp, chống lại ta.",
+                    "D": "Tất cả các phương án đều đúng."
+                },
+                "correct": "A"
+            },
+            {
+                "id": 461,
+                "q": "Nền quốc phòng toàn dân là gì (Theo Luật Quốc phòng toàn dân năm 2018)?",
+                "options": {
+                    "A": "Nền quốc phòng toàn dân là sức mạnh quốc phòng của đất nước, được xây dựng trên nền tảng chính trị, tinh thần, tài chính, mang tính chất toàn dân, toàn diện, độc lập, tự chủ, tự cường.",
+                    "B": "Nền quốc phòng toàn dân là sức mạnh quốc phòng của đất nước, được xây dựng trên nền tảng chính trị, tinh thần, nhân lực, vật lực, tài chính, mang tính chất toàn dân, toàn diện, độc lập, tự chủ, tự cường.",
+                    "C": "Nền quốc phòng toàn dân là sức mạnh quốc phòng của đất nước, được xây dựng trên nền tảng chính trị, tinh thần, nhân lực, vật lực, tài chính, mang tính chất toàn dân.",
+                    "D": "Nền quốc phòng toàn dân là sức mạnh quốc phòng của đất nước, được xây dựng trên nền tảng chính trị, tinh thần, nhân lực, vật lực, tài chính, mang tính chất toàn dân, toàn diện, độc lập, tự cường."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 462,
+                "q": "Thế nào là chiến tranh nhân dân (Theo Luật Quốc phòng toàn dân năm 2018)?",
+                "options": {
+                    "A": "Là cuộc chiến tranh toàn dân, toàn diện, lấy lực lượng vũ trang nhân dân làm nòng cốt nhằm bảo vệ độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của Tổ quốc.",
+                    "B": "Là cuộc chiến tranh, lấy lực lượng vũ trang nhân dân làm nòng cốt nhằm bảo vệ độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của Tổ quốc và bảo vệ nhân dân, Đảng, Nhà nước, chế độ xã hội chủ nghĩa.",
+                    "C": "Là cuộc chiến tranh toàn dân, toàn diện, lấy lực lượng vũ trang nhân dân làm nòng cốt nhằm bảo vệ độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của Tổ quốc và bảo vệ nhân dân, Đảng, Nhà nước, chế độ xã hội chủ nghĩa.",
+                    "D": "Là cuộc chiến tranh toàn dân, toàn diện, lấy lực lượng vũ trang nhân dân làm nòng cốt nhằm bảo vệ độc lập, chủ quyền, thống nhất, toàn vẹn lãnh thổ của Tổ quốc và bảo vệ nhân dân, Đảng, Nhà nước."
+                },
+                "correct": "C"
+            },
+            {
+                "id": 463,
+                "q": "Thế nào là thế trận quốc phòng toàn dân (Theo Luật Quốc phòng toàn dân năm 2018)?",
+                "options": {
+                    "A": "Là việc tổ chức lực lượng, tiềm lực quốc phòng trên toàn lãnh thổ theo kế hoạch thống nhất, phù hợp với chiến lược bảo vệ Tổ quốc để ngăn ngừa, đối phó thắng lợi với mọi âm mưu và hoạt động chống phá của thế lực thù địch, sẵn sàng chuyển đất nước từ thời bình sang thời chiến.",
+                    "B": "Là việc tổ chức, triển khai, bố trí lực lượng trên toàn lãnh thổ theo kế hoạch thống nhất, phù hợp với chiến lược bảo vệ Tổ quốc để ngăn ngừa, đối phó thắng lợi với mọi âm mưu và hoạt động chống phá của thế lực thù địch, sẵn sàng chuyển đất nước từ thời bình sang thời chiến.",
+                    "C": "Là việc tổ chức, triển khai, bố trí lực lượng, tiềm lực quốc phòng trên toàn lãnh thổ theo kế hoạch thống nhất, phù hợp với chiến lược bảo vệ Tổ quốc để ngăn ngừa, đối phó thắng lợi với mọi âm mưu và hoạt động chống phá của thế lực thù địch.",
+                    "D": "Là việc tổ chức, triển khai, bố trí lực lượng, tiềm lực quốc phòng trên toàn lãnh thổ theo kế hoạch thống nhất, phù hợp với chiến lược bảo vệ Tổ quốc để ngăn ngừa, đối phó thắng lợi với mọi âm mưu và hoạt động chống phá của thế lực thù địch, sẵn sàng chuyển đất nước từ thời bình sang thời chiến."
+                },
+                "correct": "D"
+            },
+            {
+                "id": 464,
+                "q": "Thiết quân luật là gì (Theo Luật Quốc phòng toàn dân năm 2018)?",
+                "options": {
+                    "A": "Thiết quân luật là biện pháp được áp dụng khi an ninh chính trị, trật tự, an toàn xã hội ở một hoặc một số địa phương bị xâm phạm nghiêm trọng tới mức chính quyền ở đó không còn kiểm soát được tình hình thì Chủ tịch nước ra lệnh thiết quân lực theo đề nghị của Chính phủ.",
+                    "B": "Thiết quân luật là biện pháp quản lý nhà nước đặc biệt có thời hạn do quân đội thực hiện. Thiết quân luật được áp dụng khi an ninh chính trị, trật tự, an toàn xã hội ở một hoặc một số địa phương bị xâm phạm tới mức chính quyền ở đó không còn kiểm soát được tình hình thì Chủ tịch nước ra lệnh thiết quân lực theo đề nghị của Chính phủ.",
+                    "C": "Thiết quân luật là biện pháp quản lý nhà nước đặc biệt có thời hạn do quân đội thực hiện. Thiết quân luật được áp dụng khi an ninh chính trị, trật tự, an toàn xã hội ở một hoặc một số địa phương bị xâm phạm nghiêm trọng tới mức chính quyền ở đó không còn kiểm soát được tình hình thì Chủ tịch nước ra lệnh thiết quân lực theo đề nghị của Chính phủ.",
+                    "D": "Thiết quân luật là biện pháp quản lý nhà nước đặc biệt có thời hạn do quân đội thực hiện. Thiết quân luật được áp dụng khi an ninh chính trị, trật tự, an toàn xã hội ở một hoặc một số địa phương bị xâm phạm nghiêm trọng tới mức chính quyền ở đó không còn kiểm soát được."
+                },
+                "correct": "C"
+            },
+            {
+                "id": 465,
+                "q": "Giới nghiêm là gì (Theo Luật Quốc phòng toàn dân năm 2018)?",
+                "options": {
+                    "A": "Giới nghiêm là biện pháp cấm, hạn chế người, phương tiện đi lại và hoạt động vào những giờ nhất định tại những khu vực nhất định, trừ trường hợp được phép theo quy định của người có thẩm quyền tổ chức thực hiện lệnh giới nghiêm.",
+                    "B": "Giới nghiêm là biện pháp cấm, phương tiện đi lại và hoạt động vào những giờ nhất định tại những khu vực nhất định, trừ trường hợp được phép theo quy định của người có thẩm quyền tổ chức thực hiện lệnh giới nghiêm.",
+                    "C": "Giới nghiêm là biện pháp cấm, hạn chế người, phương tiện đi lại vào những giờ nhất định tại những khu vực nhất định, trừ trường hợp được phép theo quy định của người có thẩm quyền tổ chức thực hiện lệnh giới nghiêm.",
+                    "D": "Giới nghiêm là biện pháp cấm, hạn chế người, phương tiện đi lại và hoạt động vào những giờ nhất định, trừ trường hợp được phép theo quy định của người có thẩm quyền tổ chức thực hiện lệnh giới nghiêm."
+                },
+                "correct": "A"
+            },
+            {
+                "id": 466,
+                "q": "Theo Công ước Liên hợp quốc về Luật biển 1982 và Luật biển Việt Nam năm 2012 thì Việt Nam có các vùng biển nào?",
+                "options": {
+                    "A": "04 vùng (nội thủy; lãnh hải; vùng tiếp giáp lãnh hải; vùng đặc quyền kinh tế).",
+                    "B": "05 vùng (nội thủy; lãnh hải; vùng tiếp giáp lãnh hải; vùng đặc quyền kinh tế; vùng thềm lục địa).",
+                    "C": "06 vùng (đường cơ sở; nội thủy; lãnh hải; vùng tiếp giáp lãnh hải; vùng đặc quyền kinh tế; vùng thềm lục địa).",
+                    "D": "05 vùng (đường cơ sở; nội thủy; lãnh hải; vùng tiếp giáp lãnh hải; vùng đặc quyền kinh tế)."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 467,
+                "q": "Trong quan hệ đối tác xếp theo cấp độ từ thấp đến cao là?",
+                "options": {
+                    "A": "Đối tác chiến lược toàn diện; đối tác toàn diện; đối tác chiến lược.",
+                    "B": "Đối tác toàn diện; đối tác chiến lược; đối tác chiến lược toàn diện.",
+                    "C": "Đối tác chiến lược; đối tác toàn diện; đối tác chiến lược toàn diện.",
+                    "D": "Đối tác chiến lược toàn diện; đối tác chiến lược; đối tác toàn diện."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 468,
+                "q": "Nghị quyết số 1659-NQ/QUTW ngày 20/12/2022 của Quân ủy Trung ương về nâng cao chất lượng huấn luyện giai đoạn 2023-2030 và những năm tiếp theo xác định huấn luyện có trọng tâm trọng điểm và tập trung vào lực lượng nào?",
+                "options": {
+                    "A": "Lực lượng làm nhiệm vụ thường trực sẵn sàng chiến đấu, lực lượng mới thành lập",
+                    "B": "Lực lượng được xác định đầu tư xây dựng tiến lên hiện đại",
+                    "C": "Lực lượng được đầu tư các phương tiện, trang thiết bị, vũ khí mới",
+                    "D": ""
+                },
+                "correct": "A"
+            },
+            {
+                "id": 469,
+                "q": "Nghị quyết số 1659-NQ/QUTW ngày 20/12/2022 của Quân ủy Trung ương về nâng cao chất lượng huấn luyện giai đoạn 2023-2030 và những năm tiếp theo xác định lấy huấn luyện quân, binh chủng nào là trung tâm?",
+                "options": {
+                    "A": "Lục quân",
+                    "B": "Phòng không, không quân",
+                    "C": "Hải quân",
+                    "D": "Không gian mạng"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 470,
+                "q": "Nghị quyết số 1659-NQ/QUTW ngày 20/12/2022 của Quân ủy Trung ương về nâng cao chất lượng huấn luyện giai đoạn 2023-2030 và những năm tiếp theo xác định lấy huấn luyện tác chiến trên trường nào làm nòng cốt?",
+                "options": {
+                    "A": "Trên không gian mạng, không gian vũ trụ",
+                    "B": "Trên bộ",
+                    "C": "Trên biển và đảo",
+                    "D": "Trên không"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 471,
+                "q": "Đề án 1371 là tên viết tắt của Đề án nào sau đây?",
+                "options": {
+                    "A": "Đề án \"Phát huy vai trò của lực lượng Quân đội nhân dân tham gia công tác PBGDPL, vận động Nhân dân chấp hành pháp luật tại cơ sở giai đoạn 2017 - 2021\"",
+                    "B": "Đề án \"Phát huy vai trò của lực lượng Quân đội nhân dân tham gia công tác PBGDPL, vận động Nhân dân chấp hành pháp luật tại cơ sở giai đoạn 2021 - 2027\"",
+                    "C": "Đề án \"Tăng cường PBGDPL cho cán bộ, Nhân dân vùng biên giới, hải đảo giai đoạn 2017 - 2021\"",
+                    "D": "Đề án \"Quân đội phòng, chống \"diễn biến hòa hình\" trên lĩnh vực tư tưởng, văn hóa\""
+                },
+                "correct": "B"
+            },
+            {
+                "id": 472,
+                "q": "Đề án 1371 xác định lực lượng nòng cốt trong tham mưu, triển khai thực hiện Đề án là ai?",
+                "options": {
+                    "A": "Quân đội nhân dân",
+                    "B": "Lực lượng vũ trang nhân dân",
+                    "C": "Công an nhân dân",
+                    "D": "Bộ đội biên phòng"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 473,
+                "q": "Phạm vi thực hiện Đề án 1371?",
+                "options": {
+                    "A": "Đề án triển khai thực hiện trên địa bàn cả nước",
+                    "B": "Đề án triển khai thực hiện đối với địa bàn vùng sâu, vùng xa, vùng dân tộc thiểu số",
+                    "C": "Đề án triển khai thực hiện trên địa bàn các tỉnh Tây Nguyên",
+                    "D": "Đề án triển khai thực hiện đối với địa bàn các tỉnh miền núi"
+                },
+                "correct": "A"
+            },
+            {
+                "id": 474,
+                "q": "Nội dung \"07 dám\" mà đồng chí Cố Tổng Bí thư Nguyễn Phú Trọng phát biểu chỉ đạo tại Hội nghị Quân ủy Trung ương lần thứ 6, nhiệm kỳ 2020-2025 ngày 03/7/2023 là gì?",
+                "options": {
+                    "A": "Dám nghĩ; dám nói; dám làm; dám chịu trách nhiệm; dám đổi mới; dám sáng tạo; dám đương đầu với khó khăn, thử thách",
+                    "B": "Dám nghĩ, dám nói; dám làm; dám chịu trách nhiệm; dám đổi mới, sáng tạo; dám đương đầu với khó khăn, thử thách; dám hành động vì lợi ích chung",
+                    "C": "Dám nghĩ, dám nói; dám làm; dám đổi mới; dám sáng tạo; dám đương đầu với khó khăn, thử thách; dám hành động vì lợi ích chung",
+                    "D": "Dám nghĩ, dám nói; dám làm; dám chịu trách nhiệm; dám sáng tạo; dám đương đầu với khó khăn; dám hành động vì lợi ích chung"
+                },
+                "correct": "B"
+            },
+            {
+                "id": 475,
+                "q": "Mô hình chi bộ, đảng bộ 4 tốt theo Hướng dẫn số 19/HD-CT ngày 08/01/2024 của Cục Chính trị Quân khu gồm những tiêu chí nào?",
+                "options": {
+                    "A": "Hoàn thành tốt nhiệm vụ chính trị",
+                    "B": "Chất lượng sinh hoạt tốt",
+                    "C": "Đoàn kết kỷ luật tốt; cán bộ, đảng viên tốt",
+                    "D": "Gồm các phương án đã nêu"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 476,
+                "q": "Theo chỉ đạo của đồng chí Tổng Bí thư Tô Lâm - Bí thư QUTW tại Hội nghị Quân ủy Trung ương lần thứ 14 ngày 19/6/2025, nội dung nào sau đây không thuộc nội dung của \"3 trọng tâm\" được nhấn mạnh?",
+                "options": {
+                    "A": "Chuẩn bị và tổ chức thành công Đại hội Đảng bộ Quân đội lần thứ XII và phục vụ tốt Đại hội toàn quốc lần thứ XIV của Đảng",
+                    "B": "Sắp xếp lại hệ thống tổ chức quân sự địa phương phù hợp với chính quyền địa phương hai cấp",
+                    "C": "Nâng cao năng lực dự báo, nghiên cứu, tham mưu hiệu quả bảo vệ chủ quyền toàn vẹn lãnh thổ",
+                    "D": "Triển khai mạnh mẽ dự án hiện đại hóa vũ khí, trang bị quân sự"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 477,
+                "q": "Theo chỉ đạo của Tổng Bí thư Tô Lâm - Bí thư QUTW tại Hội nghị Quân ủy Trung ương lần thứ 14 ngày 19/6/2025, nội dung nào sau đây không thuộc nhóm \"3 quyết liệt\" mà Quân ủy Trung ương cần tập trung thực hiện?",
+                "options": {
+                    "A": "Thực hiện phong trào \"Bình dân học vụ số\", để mỗi cán bộ, chiến sĩ là một \"chiến sĩ số\"; \"hiện đại hóa con người trước hiện đại hóa vũ khí, trang bị\"",
+                    "B": "Quyết liệt triển khai các dự án trọng điểm về quân sự, quốc phòng",
+                    "C": "Tổ chức thành công Đại hội Đảng bộ Quân đội lần thứ XII",
+                    "D": "Quyết liệt trong duy trì, củng cố, mở rộng hợp tác quốc phòng tin cậy với các nước, các đối tác"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 478,
+                "q": "Theo Quy chế công tác quản lý tư tưởng quân nhân; năm và định hướng dư luận trong QĐND Việt Nam (Ban hành kèm theo Quyết định số 775/QĐ-CT ngày 12/5/2022 của Chủ nhiệm TCCT), chủ thể lãnh đạo, chỉ đạo tiến hành công tác quản lý tư tưởng; nắm và định hướng dư luận trong Quân đội là ai?",
+                "options": {
+                    "A": "Cấp ủy, chỉ huy đơn vị",
+                    "B": "Cấp ủy, tổ chức đảng, chính ủy, chính trị viên (bí thư), người chỉ huy, cơ quan chính trị, cán bộ chính trị các cấp",
+                    "C": "Toàn bộ hệ thống tổ chức bao gồm: Tổ chức đảng, tổ chức chỉ huy, tổ chức quần chúng và Hội đồng quân nhân",
+                    "D": "Cơ quan chức năng, cán bộ, đảng viên, đoàn viên, thanh niên, hội viên...."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 479,
+                "q": "Theo Quy chế công tác quản lý tư tưởng quân nhân; năm và định hướng dư luận trong QĐND Việt Nam (Ban hành kèm theo Quyết định số 775/QĐ-CT ngày 12/5/2022 của Chủ nhiệm TCCT), lực lượng phối hợp thực hiện công tác quản lý tư tưởng; nắm và định hướng dư luận trong Quân đội là ai?",
+                "options": {
+                    "A": "Các cơ quan, đơn vị và mọi quân nhân",
+                    "B": "Cấp ủy, chính quyền, đoàn thể địa phương, gia đình, người thân của quân nhân",
+                    "C": "Quân nhân và tập thể quân nhân",
+                    "D": "Cơ quan chức năng, cán bộ, đảng viên, đoàn viên, thanh niên, hội viên...."
+                },
+                "correct": "B"
+            },
+            {
+                "id": 480,
+                "q": "Quy trình tiến hành công tác quản lý tư tưởng quân nhân theo Quy chế công tác quản lý tư tưởng quân nhân; nắm và định hướng dư luận trong QĐND Việt Nam (Ban hành kèm theo Quyết định số 775/QĐ-CT ngày 12/5/2022 của Chủ nhiệm TCCT)?",
+                "options": {
+                    "A": "Nắm tư tưởng quân nhân; dự báo tình hình tư tưởng quân nhân; quản lý, đánh giá, phân loại tư tưởng quân nhân; giải quyết tư tưởng; đấu tranh tư tưởng",
+                    "B": "Nắm tư tưởng quân nhân; quản lý, đánh giá, phân loại tư tưởng quân nhân; định hướng tư tưởng; giải quyết tư tưởng; báo cáo tình hình tư tưởng",
+                    "C": "Nắm tư tưởng quân nhân; định hướng tư tưởng quân nhân; quản lý, đánh giá, phân loại tư tưởng quân nhân; giải quyết tư tưởng; đấu tranh tư tưởng",
+                    "D": "Nắm tư tưởng quân nhân; dự báo tình hình tư tưởng quân nhân; quản lý, đánh giá, phân loại tư tưởng quân nhân"
+                },
+                "correct": "D"
+            },
+            {
+                "id": 481,
+                "q": "Theo Quy chế công tác quản lý tư tưởng quân nhân; năm và định hướng dư luận trong QĐND Việt Nam, nội dung quản lý tư tưởng quân nhân gồm?",
+                "options": {
+                    "A": "Lai lịch chính trị; phẩm chất đạo đức, lối sống; thực hiện chức trách, nhiệm vụ; ý thức tổ chức kỷ luật; tinh thần đoàn kết nội bộ, đoàn kết quân dân",
+                    "B": "Biểu hiện về tư tưởng chính trị; phẩm chất đạo đức, lối sống; thực hiện chức trách, nhiệm vụ; ý thức tổ chức kỷ luật; mối quan hệ xã hội; mối quan hệ gia đình; các hoạt động tham gia mạng xã hội",
+                    "C": "Biểu hiện về tư tưởng chính trị; phẩm chất đạo đức, lối sống; thực hiện chức trách, nhiệm vụ; ý thức tổ chức kỷ luật; tinh thần đoàn kết nội bộ, đoàn kết quân dân, đoàn kết quốc tế",
+                    "D": "Nắm về bản lĩnh chính trị; phẩm chất đạo đức, lối sống; kết quả thực hiện chức trách, nhiệm vụ; ý thức tổ chức kỷ luật; mối quan hệ xã thội; mối quan hệ gia đình; các hoạt động tham gia mạng xã hội"
+                },
+                "correct": "C"
+            },
+            {
+                "id": 482,
+                "q": "Theo Quy chế công tác quản lý tư tưởng quân nhân; nắm và định hướng dư luận trong QĐND Việt Nam (Ban hành kèm theo Quyết định số 775/QĐ-CT ngày 12/5/2022 của Chủ nhiệm TCCT), việc đánh giá, phân loại tư tưởng ở cấp đại đội và tương đương được quy định như thế nào?",
+                "options": {
+                    "A": "Hằng ngày, căn cứ vào kết quả nắm tình hình và báo cáo của các đầu mối trực thuộc, tiến hành phân loại tư tưởng đến từng quân nhân",
+                    "B": "Hằng tuần, căn cứ vào kết quả nắm tình hình và báo cáo của các đầu mối trực thuộc, tiến hành phân loại tư tưởng đến từng quân nhân",
+                    "C": "Hằng tháng, căn cứ vào kết quả nắm tình hình và báo cáo của các đầu mối trực thuộc, tiến hành phân loại tư tưởng đến từng quân nhân",
+                    "D": "Hằng quý, căn cứ vào kết quả nắm tình hình và báo cáo của các đầu mối trực thuộc, tiến hành phân loại tư tưởng đến từng quân nhân"
+                },
+                "correct": "C"
+            },
+{
+                "id": 483,
+                "q": "Phương châm thực hiện Cuộc vận động phát huy truyền thống, cống hiến tài năng, xứng danh \"Bộ đội Cụ Hồ\" thời kỳ mới theo Chỉ thị số 855-CT/QUTW của TVQUTW là gì?",
+                "options": {
+                    "A": "\"Cấp ủy trước, tổ chức đảng sau\", \"trong trước, ngoài sau\"",
+                    "B": "\"Cấp ủy, tổ chức đảng trước, quần chúng sau\", \"trong trước, ngoài sau\"",
+                    "C": "\"Trên trước, dưới sau\", \"trong trước, ngoài sau\"",
+                    "D": "\"Trên trước, dưới sau\", \"ngoài trước, trong sau\""
+                },
+                "correct": "C"
+            },
+{
+                "id": 484,
+                "q": "Nội dung đề cao trách nhiệm nêu gương của cán bộ, đảng viên trong phát huy phẩm chất \"Bộ đội Cụ Hồ\" thời kỳ mới bao gồm?",
+                "options": {
+                    "A": "Về phẩm chất chính trị; về đạo đức, lối sống; về năng lực, phương pháp tác phong công tác; về ý thức, tổ chức kỷ luật; tinh thần đoàn kết nội bộ, đoàn kết quân dân, đoàn kết quốc tế",
+                    "B": "Về phẩm chất chính trị; về phẩm chất đạo đức, lối sống; trong thực hiện chức trách, nhiệm vụ; về phong cách làm việc, tác phong công tác; trong giữ gìn đoàn kết nội bộ, đoàn kết quân dân, đoàn kết quốc tế",
+                    "C": "Về phẩm chất chính trị; về gương mẫu trong lời nói và việc làm; về phong cách làm việc, tác phong công tác; trong giữ gìn đoàn kết nội bộ, đoàn kết quân dân, đoàn kết quốc tế",
+                    "D": "Về phẩm chất chính trị; về phẩm chất đạo đức, lối sống; trong thực hiện chức trách, nhiệm vụ; về phong cách làm việc, tác phong công tác"
+                },
+                "correct": "B"
+            },
+{
+                "id": 485,
+                "q": "Theo Nghị quyết số 847-NQ/QUTW ngày 28/12/2021 của Quân ủy Trung ương giải pháp quan trọng hàng đầu để giữ vững và phát huy phẩm chất \"Bộ đội Cụ Hồ\"; kiên quyết chống chủ nghĩa cá nhân trong tình hình mới?",
+                "options": {
+                    "A": "Coi trọng xây dựng các cấp ủy, tổ chức đảng trong sạch, vững mạnh tiêu biểu, đề cao vai trò, trách nhiệm trong lãnh đạo phát huy phẩm chất \"Bộ đội Cụ Hồ\", kiên quyết chống chủ nghĩa cá nhân",
+                    "B": "Xây dựng đội ngũ cán bộ các cấp có đủ phẩm chất, năng lực, uy tín thực sự là tấm gương mẫu mực trong phát huy phẩm chất \"Bộ đội Cụ Hồ\"",
+                    "C": "Nâng cao hiệu lực, hiệu quả công tác kiểm tra, giám sát; kiên quyết chấn chỉnh, xử lý nghiêm các vi phạm",
+                    "D": "Tăng cường công tác lãnh đạo tư tưởng, giáo dục chính trị, nâng cao nhận thức, trách nhiệm cho cán bộ, đảng viên và quần chúng tiếp tục phát huy phẩm chất \"Bộ đội Cụ Hồ\", kiên quyết chống chủ nghĩa cá nhân"
+                },
+                "correct": "D"
+            },
+{
+                "id": 486,
+                "q": "Theo Quy định số 144-QĐ/TW, ngày 09/5/2024 của Bộ Chính trị, đâu là chuẩn mực đạo đức cách mạng của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Liên hệ chặt chẽ với Nhân dân, lắng nghe ý kiến và chịu sự giám sát của Nhân dân",
+                    "B": "Tôn trọng Nhân dân, tận tụy phục vụ Nhân dân",
+                    "C": "Trung thành với Đảng Cộng sản Việt Nam, bảo vệ danh dự Tổ quốc và lợi ích quốc gia",
+                    "D": "Gương mẫu, khiêm tốn, tu dưỡng rèn luyện, học tập suốt đời"
+                },
+                "correct": "D"
+            },
+{
+                "id": 487,
+                "q": "Theo Quy định số 144-QĐ/TW, ngày 09/5/2024 của Bộ Chính trị, \"Suốt đời phấn đấu cho mục đích, lý tưởng cách mạng của Đảng; nêu cao tinh thần yêu nước, lòng tự hào dân tộc, tuyệt đối trung thành với Tổ quốc, với sự nghiệp cách mạng của Đảng; hết lòng, hết sức phụng sự Tổ quốc, phục vụ Nhân dân\" là chuẩn mực đạo đức cách mạng nào của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Bản lĩnh, đổi mới, sáng tạo, hội nhập",
+                    "B": "Cần, kiệm, liêm, chính, chí công vô tư",
+                    "C": "Đoàn kết, kỷ cương, tình thương, trách nhiệm",
+                    "D": "Yêu nước, tôn trọng Nhân dân, tuyệt đối trung thành với Đảng, với Tổ quốc"
+                },
+                "correct": "D"
+            },
+{
+                "id": 488,
+                "q": "Theo Quy định số 144-QĐ/TW, ngày 09/5/2024 của Bộ Chính trị, \"Tâm huyết, trách nhiệm, dấn thân, nỗ lực hoàn thành tốt nhất nhiệm vụ được giao, có ý chí, quyết tâm thực hiện thắng lợi công cuộc đổi mới do Đảng lãnh đạo, góp phần xây dựng đất nước giàu mạnh, phồn vinh, văn minh, hạnh phúc\" là chuẩn mực đạo đức cách mạng nào của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Bản lĩnh, đổi mới, sáng tạo, hội nhập",
+                    "B": "Cần, kiệm, liêm, chính, chí công vô tư",
+                    "C": "Đoàn kết, kỷ cương, tình thương, trách nhiệm",
+                    "D": "Gương mẫu, khiêm tốn, tu dưỡng rèn luyện, học tập suốt đời"
+                },
+                "correct": "B"
+            },
+{
+                "id": 489,
+                "q": "Theo Quy định số 144-QĐ/TW, ngày 09/5/2024 của Bộ Chính trị, \"Gương mẫu trong công tác và sinh hoạt, tích cực học tập và làm theo tư tưởng, đạo đức, phong cách Hồ Chí Minh. Cán bộ, đảng viên chức vụ càng cao càng phải gương mẫu, cấp trên gương mẫu trước cấp dưới, cấp ủy gương mẫu trước đảng viên, đảng viên gương mẫu trước quần chúng\" là chuẩn mực đạo đức cách mạng nào của cán bộ, đảng viên?",
+                "options": {
+                    "A": "Bản lĩnh, đổi mới, sáng tạo, hội nhập",
+                    "B": "Cần, kiệm, liêm, chính, chí công vô tư",
+                    "C": "Đoàn kết, kỷ cương, tình thương, trách nhiệm",
+                    "D": "Gương mẫu, khiêm tốn, tu dưỡng rèn luyện, học tập suốt đời"
+                },
+                "correct": "D"
+            },
+{
+                "id": 490,
+                "q": "Mục tiêu chiến lược \"diễn biến hòa bình\" của các thế lực thù địch chống phá cách mạng Việt Nam?",
+                "options": {
+                    "A": "Nhằm xóa bỏ vai trò lãnh đạo của Đảng Cộng sản Việt Nam, xóa bỏ CNXH, xóa bỏ độc lập dân tộc của Việt Nam và buộc Việt Nam đi theo con đường tư bản chủ nghĩa",
+                    "B": "Nhằm xóa bỏ vai trò lãnh đạo của Đảng Cộng sản Việt Nam, xóa bỏ CNXH ở Việt Nam",
+                    "C": "Nhằm xóa bỏ vai trò lãnh đạo của Đảng Cộng sản Việt Nam, xóa bỏ CNXH và buộc Việt Nam đi theo con đường tư bản chủ nghĩa",
+                    "D": "Gồm các phương án đã nêu"
+                },
+                "correct": "A"
+            },
+{
+                "id": 491,
+                "q": "Lực lượng đấu tranh chống các quan điểm sai trái, thù địch trên không gian mạng trong Quân đội (Lực lượng 47) thành lập ở cấp nào?",
+                "options": {
+                    "A": "Từ cấp tiểu đoàn và tương đương trở lên",
+                    "B": "Từ Quân ủy Trung ương đến cấp trung đoàn (tương đương)",
+                    "C": "Cấp nào có Ban Chỉ đạo 35 thì cấp đó thành lập \"Lực lượng 47\"",
+                    "D": "Cấp sư đoàn, Bộ CHQS tỉnh, thành phố và Quân khu"
+                },
+                "correct": "B"
+            },
+{
+                "id": 492,
+                "q": "Đấu tranh trên không gian mạng trong Quân đội nhân dân Việt Nam là nhiệm vụ của ai?",
+                "options": {
+                    "A": "Là nhiệm vụ của cấp ủy, chỉ huy các cấp",
+                    "B": "Là nhiệm vụ của cán bộ chính trị các cấp",
+                    "C": "Là nhiệm vụ của cấp ủy, chỉ huy và của mọi tổ chức, mọi lực lượng trong toàn quân",
+                    "D": "Là nhiệm vụ của cơ quan chính trị các cấp"
+                },
+                "correct": "C"
+            },
+{
+                "id": 493,
+                "q": "Để kết nối thông tin với Ban Chỉ đạo Quân ủy Trung ương về bảo vệ nền tảng tư tưởng của Đảng, đấu tranh phản bác các quan điểm sai trái, khi tham gia mạng xã hội cán bộ, chiến sĩ vào trang fanpage nào?",
+                "options": {
+                    "A": "Nhân văn Hà Nội",
+                    "B": "Làng quan họ",
+                    "C": "Lực lượng 47",
+                    "D": "Chính sự phiếm đàm"
+                },
+                "correct": "A"
+            },
+{
+                "id": 494,
+                "q": "Để kết nối thông tin với Ban Chỉ đạo Trung ương về bảo vệ nền tảng tư tưởng của Đảng, đấu tranh phản bác các quan điểm sai trái, khi tham gia mạng xã hội cán bộ, chiến sĩ vào trang fanpage nào sau đây?",
+                "options": {
+                    "A": "TRE ĐĂNG NGÀ",
+                    "B": "HƯƠNG SEN VIỆT",
+                    "C": "LŨY TRE LÀNG",
+                    "D": "THÀNH ĐỒNG TỔ QUỐC"
+                },
+                "correct": "B"
+            },
+{
+                "id": 495,
+                "q": "Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư về việc cán bộ, đảng viên thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet áp dụng đối tượng nào?",
+                "options": {
+                    "A": "Áp dụng đối với cán bộ, đảng viên, nhất là cán bộ lãnh đạo, quản lý, người đứng đầu cấp ủy, tổ chức đảng",
+                    "B": "Áp dụng đối với các cấp ủy, tổ chức đảng, cán bộ, đảng viên",
+                    "C": "Áp dụng đối với cán bộ, đảng viên khi tham gia mạng xã hội",
+                    "D": "Áp dụng với cấp ủy, tổ chức đảng"
+                },
+                "correct": "B"
+            },
+{
+                "id": 496,
+                "q": "Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư, trách nhiệm của cấp ủy, tổ chức đảng đối với cán bộ, đảng viên thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet, mạng xã hội là gì?",
+                "options": {
+                    "A": "Lãnh đạo cơ quan, đơn vị thường xuyên quản lý tốt cán bộ, đảng viên tham gia Internet, mạng xã hội;",
+                    "B": "Phối hợp với các cơ quan chức năng theo dõi, rà soát, phát hiện, dự báo, cảnh báo các trang thông tin điện tử giả mạo tổ chức đảng, cán bộ, đảng viên của cấp mình quản lý;",
+                    "C": "Thông báo trang thông tin điện tử giả mạo các đồng chí ủy viên Bộ Chính trị, ủy viên Ban Bí thư, ủy viên Ban Chấp hành Trung ương, lãnh đạo các ban, bộ, ngành Trung ương, địa phương, lãnh đạo cấp cao Quân đội, các cơ quan, đơn vị chức năng của Đảng, Nhà nước và Quân đội đến các đơn vị có chức năng xử lý tin giả, thông tin sai sự thật.",
+                    "D": "Gồm các phương án đã nêu."
+                },
+                "correct": "D"
+            },
+{
+                "id": 497,
+                "q": "Đâu là trách nhiệm của cán bộ, đảng viên trong việc thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet, mạng xã hội theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư?",
+                "options": {
+                    "A": "Khai báo thông tin chính danh;",
+                    "B": "Đăng ký ít nhất 01 tài khoản mạng xã hội;",
+                    "C": "Sẵn sàng tham gia đấu tranh trên không gian mạng khi có chỉ đạo;",
+                    "D": "Quản lý chặt chẽ trang thông tin điện tử cá nhân của mình;"
+                },
+                "correct": "A"
+            },
+{
+                "id": 498,
+                "q": "Đâu là trách nhiệm của cán bộ, đảng viên trong việc thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet, mạng xã hội theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư?",
+                "options": {
+                    "A": "Đăng ký ít nhất 01 tài khoản mạng xã hội;",
+                    "B": "Ưu tiên sử dụng tên miền quốc gia \".vn\" và tên miền tiếng Việt;",
+                    "C": "Hủy bỏ những nội dung không cần thiết trên các trang mạng cá nhân;",
+                    "D": "Quản lý chặt chẽ trang thông tin điện tử cá nhân của mình;"
+                },
+                "correct": "B"
+            },
+{
+                "id": 499,
+                "q": "Đâu là trách nhiệm của cán bộ, đảng viên trong việc thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet, mạng xã hội theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư?",
+                "options": {
+                    "A": "Quản lý chặt chẽ trang thông tin điện tử cá nhân của mình;",
+                    "B": "Đăng ký ít nhất 01 tài khoản mạng xã hội;",
+                    "C": "Hủy bỏ các trang thông tin điện tử cá nhân khi không còn sử dụng;",
+                    "D": "Sẵn sàng tham gia đấu tranh trên không gian mạng khi có chỉ đạo;"
+                },
+                "correct": "C"
+            },
+{
+                "id": 500,
+                "q": "Cán bộ, đảng viên được coi là vi phạm Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư khi có một trong các hành vi nào sau đây?",
+                "options": {
+                    "A": "Tạo lập và sử dụng các trang thông tin điện tử cá nhân ẩn danh (trừ những trang thông tin điện tử được cấp ủy, tổ chức đảng có thẩm quyền cho phép hoặc do yêu cầu bảo vệ bí mật), nặc danh; giả mạo, mạo danh người khác;",
+                    "B": "Sử dụng các trang thông tin điện tử cá nhân để tuyên truyền, lan tỏa thông tin trên Internet, mạng xã hội;",
+                    "C": "Truy cập vào trang thông tin điện tử cá nhân, thu thập đủ các thông tin theo yêu cầu và báo cáo cấp ủy hoặc cơ quan chức năng theo quy định;",
+                    "D": "Tạo lập và sử dụng nhiều trang thông tin điện tử cá nhân;"
+                },
+                "correct": "A"
+            },
+{
+                "id": 501,
+                "q": "Cán bộ, đảng viên được coi là vi phạm Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư khi có một trong các hành vi nào sau đây?",
+                "options": {
+                    "A": "Tạo lập và sử dụng nhiều trang thông tin điện tử cá nhân;",
+                    "B": "Khai báo không trung thực các thông tin liên quan đến trang thông tin điện tử cá nhân với cấp ủy, tổ chức đảng hoặc cơ quan chức năng;",
+                    "C": "Sử dụng các trang thông tin điện tử cá nhân để tuyên truyền, lan tỏa thông tin trên Internet, mạng xã hội;",
+                    "D": "Truy cập vào trang thông tin điện tử cá nhân, thu thập đủ các thông tin khi chưa được cấp ủy hoặc cơ quan chức năng cho phép;"
+                },
+                "correct": "B"
+            },
+{
+                "id": 502,
+                "q": "Cán bộ, đảng viên được coi là vi phạm Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư khi có một trong các hành vi nào sau đây?",
+                "options": {
+                    "A": "Sử dụng các trang thông tin điện tử cá nhân để tuyên truyền, lan tỏa thông tin trên Internet, mạng xã hội;",
+                    "B": "Bổ sung, cập nhật thông tin liên quan đến trang thông tin điện tử cá nhân trong suốt quá trình sử dụng khi chưa được cho phép;",
+                    "C": "Tạo lập và sử dụng trang thông tin điện tử cá nhân trái với các quy định của Đảng và pháp luật của Nhà nước hiện hành;",
+                    "D": "Truy cập vào trang thông tin điện tử cá nhân, thu thập đủ các thông tin khi chưa được cấp ủy hoặc cơ quan chức năng cho phép;"
+                },
+                "correct": "C"
+            },
+{
+                "id": 503,
+                "q": "Theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư, lan tỏa thông tin tích cực trên Internet, mạng xã hội gồm một số phương thức cơ bản nào sau đây?",
+                "options": {
+                    "A": "Bày tỏ cảm xúc, thái độ đồng tình với các thông tin tích cực; Bình luận theo hướng đồng thuận, làm rõ thêm thông tin được phản ánh;",
+                    "B": "Biên tập, viết bài ngắn theo hướng tóm tắt nội dung bài viết gốc, kết hợp với hình ảnh, video minh họa tạo sự hấp dẫn, thu hút người đọc trên mạng xã hội;",
+                    "C": "Chia sẻ rộng rãi thông tin tích cực lên trang thông tin điện tử cá nhân và các trang thông tin điện tử khác mà mình tham gia;",
+                    "D": "Gồm các phương án đã nêu"
+                },
+                "correct": "D"
+            },
+{
+                "id": 504,
+                "q": "Theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư, cán bộ, đảng viên phải chịu trách nhiệm về những nội dung thông tin nào trên trang thông tin điện tử cá nhân của mình?",
+                "options": {
+                    "A": "Thông tin mà mình lưu trữ (dưới dạng tin, bài, ảnh, âm thanh, video, tệp tin điện tử, thư điện tử...), truyền đưa (lan truyền, trao đổi thông tin với người khác trên Internet, mạng xã hội;",
+                    "B": "Cung cấp (công khai thông tin, cho, bán, tặng thông tin...), tán phát (đăng tải, bình luận, tạo liên kết để truy cập vào thông tin) trên Internet, mạng xã hội;",
+                    "C": "Lan tỏa (nhân rộng thông tin), chia sẻ (phân phối thông tin) trên Internet, mạng xã hội;",
+                    "D": "Gồm các phương án đã nêu."
+                },
+                "correct": "D"
+            },
+{
+                "id": 505,
+                "q": "Theo Quy định số 85-QĐ/TW ngày 07/10/2022 của Ban Bí thư, cán bộ, đảng viên thiết lập và sử dụng trang thông tin điện tử cá nhân trên Internet, mạng xã hội tuyệt đối không được?",
+                "options": {
+                    "A": "Cho, cho mượn, cho thuê trang thông tin điện tử cá nhân;",
+                    "B": "Bán, thế chấp trang thông tin điện tử cá nhân;",
+                    "C": "Nhận, mượn, thuê, mua, nhận thế chấp trang thông tin điện tử của người khác để thực hiện hành vi trái với các quy định của Đảng, vi phạm pháp luật của Nhà nước, kỷ luật của Quân đội;",
+                    "D": "Gồm các phương án đã nêu."
+                },
+                "correct": "D"
+            },
         ]
-  let showAnswers = true;
-  let onlyShowCorrect = false;
 
-  const elSearch = document.getElementById('search');
-  const elResults = document.getElementById('results');
-  const elMeta = document.getElementById('meta');
-  const btnToggleAns = document.getElementById('toggleAns');
-  const btnOnlyCorrect = document.getElementById('onlyCorrect');
+        let showAnswers = true;
+        let onlyShowCorrect = false;
 
-  function normalizeVN(str) {
-    return (str || '').toLowerCase()
-      .normalize('NFD')
-      .replace(/\p{Diacritic}+/gu, '')
-      .replace(/đ/g, 'd');
-  }
+        const elSearch = document.getElementById('search');
+        const elResults = document.getElementById('results');
+        const elMeta = document.getElementById('meta');
+        const btnToggleAns = document.getElementById('toggleAns');
+        const btnOnlyCorrect = document.getElementById('onlyCorrect');
 
-  function render(items) {
-    elResults.innerHTML = '';
-    elMeta.textContent = `Hiển thị ${items.length} / ${qaList.length} câu`;
-    const frag = document.createDocumentFragment();
-    items.forEach(item => {
-      const card = document.createElement('div');
-      card.className = 'card';
-
-      const top = document.createElement('div');
-      top.className = 'qid';
-      top.textContent = `Câu ${item.id}`;
-      card.appendChild(top);
-
-      const q = document.createElement('div');
-      q.className = 'question';
-      q.textContent = item.q;
-      card.appendChild(q);
-
-      // options
-      const optsWrap = document.createElement('div');
-      optsWrap.className = 'options';
-      const correctLetters = (item.correct || '').toUpperCase();
-
-      Object.entries(item.options || {}).forEach(([k, v]) => {
-        const opt = document.createElement('div');
-        opt.className = 'opt';
-        const isCorrect = correctLetters.includes(k);
-        if (isCorrect) opt.classList.add('correct');
-        if (onlyShowCorrect && !isCorrect) {
-          opt.style.display = 'none';
+        function normalizeVN(str) {
+            return (str || '').toLowerCase()
+                .normalize('NFD')
+                .replace(/\p{Diacritic}+/gu, '')
+                .replace(/đ/g, 'd');
         }
-        opt.innerHTML = `<b>${k})</b> <span>${v}</span>`;
-        optsWrap.appendChild(opt);
-      });
-      card.appendChild(optsWrap);
 
-      // answer
-      const ans = document.createElement('div');
-      ans.className = 'answer';
-      ans.textContent = item.correct ? `Đáp án: ${item.correct}` : 'Đáp án: (chưa xác định)';
-      ans.style.display = showAnswers ? '' : 'none';
-      card.appendChild(ans);
+        function highlightText(text, searchTerm) {
+            if (!searchTerm) return text;
+            
+            const normalizedText = normalizeVN(text);
+            const normalizedSearch = normalizeVN(searchTerm);
+            
+            if (!normalizedText.includes(normalizedSearch)) return text;
+            
+            // Create a regex that matches the search term case-insensitively
+            const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(regex, '<span style="background-color: yellow; padding: 2px 4px; border-radius: 3px;">$1</span>');
+        }
 
-      frag.appendChild(card);
-    });
-    elResults.appendChild(frag);
-  }
+        function render(items) {
+            elResults.innerHTML = '';
+            elMeta.textContent = `Hiển thị ${items.length} / ${qaList.length} câu`;
+            const frag = document.createDocumentFragment();
+            const searchTerm = elSearch.value.trim();
+            
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card';
 
-  function doSearch() {
-    const q = normalizeVN(elSearch.value);
-    if (!q) { render(qaList); return; }
-    const filtered = qaList.filter(item => {
-      const text = [
-        item.q,
-        Object.entries(item.options || {}).map(([k, v]) => `${k}) ${v}`).join(' '),
-        item.correct
-      ].join(' ');
-      return normalizeVN(text).includes(q);
-    });
-    render(filtered);
-  }
+                const top = document.createElement('div');
+                top.className = 'qid';
+                top.textContent = `Câu ${item.id}`;
+                card.appendChild(top);
 
-  // events
-  elSearch.addEventListener('input', doSearch);
-  btnToggleAns.addEventListener('click', () => {
-    showAnswers = !showAnswers;
-    btnToggleAns.classList.toggle('active', showAnswers);
-    doSearch();
-  });
-  btnOnlyCorrect.addEventListener('click', () => {
-    onlyShowCorrect = !onlyShowCorrect;
-    btnOnlyCorrect.classList.toggle('active', onlyShowCorrect);
-    doSearch();
-  });
+                const q = document.createElement('div');
+                q.className = 'question';
+                q.innerHTML = highlightText(item.q, searchTerm);
+                card.appendChild(q);
 
-  // init
-  render(qaList);
-</script>
+                // options
+                const optsWrap = document.createElement('div');
+                optsWrap.className = 'options';
+                const correctLetters = (item.correct || '').toUpperCase();
+
+                Object.entries(item.options || {}).forEach(([k, v]) => {
+                    const opt = document.createElement('div');
+                    opt.className = 'opt';
+                    const isCorrect = correctLetters.includes(k);
+                    if (isCorrect) opt.classList.add('correct');
+                    if (onlyShowCorrect && !isCorrect) {
+                        opt.style.display = 'none';
+                    }
+                    opt.innerHTML = `<b>${k})</b> <span>${highlightText(v, searchTerm)}</span>`;
+                    optsWrap.appendChild(opt);
+                });
+                card.appendChild(optsWrap);
+
+                // answer
+                const ans = document.createElement('div');
+                ans.className = 'answer';
+                const answerText = item.correct ? `Đáp án: ${item.correct}` : 'Đáp án: (chưa xác định)';
+                ans.innerHTML = highlightText(answerText, searchTerm);
+                ans.style.display = showAnswers ? '' : 'none';
+                card.appendChild(ans);
+
+                frag.appendChild(card);
+            });
+            elResults.appendChild(frag);
+        }
+
+        function doSearch() {
+            const q = normalizeVN(elSearch.value);
+            if (!q) { render(qaList); return; }
+            const filtered = qaList.filter(item => {
+                const text = [
+                    item.q,
+                    Object.entries(item.options || {}).map(([k, v]) => `${k}) ${v}`).join(' '),
+                    item.correct
+                ].join(' ');
+                return normalizeVN(text).includes(q);
+            });
+            render(filtered);
+        }
+
+        // events
+        elSearch.addEventListener('input', doSearch);
+        btnToggleAns.addEventListener('click', () => {
+            showAnswers = !showAnswers;
+            btnToggleAns.classList.toggle('active', showAnswers);
+            doSearch();
+        });
+        btnOnlyCorrect.addEventListener('click', () => {
+            onlyShowCorrect = !onlyShowCorrect;
+            btnOnlyCorrect.classList.toggle('active', onlyShowCorrect);
+            doSearch();
+        });
+
+        // init
+        render(qaList);
+    </script>
 </body>
 </html>
